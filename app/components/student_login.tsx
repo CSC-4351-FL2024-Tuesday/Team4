@@ -1,5 +1,23 @@
 "use client";
 import React, { useState } from 'react';
+import { Button } from "@/components/ui/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs"
+import Header from './header';
 
 const StudentLoginPage: React.FC = () => {
     const [username, setUsername] = useState('');
@@ -19,22 +37,69 @@ const StudentLoginPage: React.FC = () => {
     };
 
     return (
+    <div className='flex flex-col h-screen w-screen'>
         <div>
-            <h1>Login Page</h1>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Username:
-                    <input type="text" value={username} onChange={handleUsernameChange} />
-                </label>
-                <br />
-                <label>
-                    Password:
-                    <input type="password" value={password} onChange={handlePasswordChange} />
-                </label>
-                <br />
-                <button type="submit">Login</button>
-            </form>
+            <Header />
         </div>
+        <div className='flex-grow flex justify-center items-center'>
+            <Tabs defaultValue="login" className="w-[400px]">
+                <TabsList className="grid w-full grid-cols-2">
+                    <TabsTrigger value="login">Login</TabsTrigger>
+                    <TabsTrigger value="signup">Sign Up</TabsTrigger>
+                </TabsList>
+                <TabsContent value="login">
+                    <Card>
+                    <CardHeader>
+                        <CardTitle>Student Login</CardTitle>
+                        <CardDescription>
+                        Login to your account to access your dashboard.
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-2">
+                        <div className="space-y-1">
+                        <Label htmlFor="username">Username</Label>
+                        <Input id="username"/>
+                        </div>
+                        <div className="space-y-1">
+                        <Label htmlFor="password">Password</Label>
+                        <Input id="password" type='password' />
+                        </div>
+                    </CardContent>
+                    <CardFooter>
+                        <Button>Login</Button>
+                    </CardFooter>
+                    </Card>
+                </TabsContent>
+                <TabsContent value="signup">
+                    <Card>
+                    <CardHeader>
+                        <CardTitle>Student Sign Up</CardTitle>
+                        <CardDescription>
+                            Create a new account to start your journey.
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-2">
+                        <div className="space-y-1">
+                        <Label htmlFor="email">Email</Label>
+                        <Input id="email"/>
+                        </div>
+                        <div className="space-y-1">
+                        <Label htmlFor="password">Password</Label>
+                        <Input id="password" type="password" />
+                        </div>
+                        <div className="space-y-1">
+                        <Label htmlFor="confirmPassword">Confirm Password</Label>
+                        <Input id="confirmPassword" type="password" />
+                        </div>
+                    </CardContent>
+                    <CardFooter>
+                        <Button>Sign Up</Button>
+                    </CardFooter>
+                    </Card>
+                </TabsContent>
+            </Tabs>
+        </div>
+    </div>
     );
 };
 

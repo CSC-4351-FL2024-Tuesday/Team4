@@ -18,14 +18,14 @@ export interface HeaderProps {
 export default class Header extends React.Component<HeaderProps> {
   public render() {
     return (
-      <div className='w-screen flex'>
+      <div className='w-screen flex justify-between my-2'>
         {/* logo */}
-        <div className='my-2 ml-4'>
+        <div className='ml-4'>
           CareerSwipe
         </div>
 
         {/* Navigation menu */}
-        <div className='flex justify-end'>
+        <div className='flex mr-4 justify-between justify-items-center'>
           <div className=''>
             <NavigationMenu>
                 <NavigationMenuList>

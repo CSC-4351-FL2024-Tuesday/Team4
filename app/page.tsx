@@ -6,6 +6,6 @@ import ResumeUpload from "./components/resume_upload";
 
 export default function Home() {
   return (
-    <ResumeUpload/>
+    <StudentProfile />
   );
 }

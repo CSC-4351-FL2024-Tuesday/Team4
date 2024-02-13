@@ -1,19 +1,20 @@
 'use client';
 import * as React from 'react';
-import Header from './header';
+import Header from './common/header';
 import { Button } from '@/components/ui/button';
 import { IoIosSchool } from "react-icons/io";
 import { IoLocationSharp } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import { IoIosLink } from "react-icons/io";
 import { Separator } from '@/components/ui/separator';
+import StudentInfo from './common/student_info';
 export interface StudentProfileProps {
 }
 
 export default class StudentProfile extends React.Component<StudentProfileProps> {
   public render() {
     return (
-      <div className='flex flex-col h-screen w-screen'>
+      <div className='flex flex-col h-screen w-screen overflow-x-hidden'>
             <div>
                 <Header/>
             </div>
@@ -51,65 +52,8 @@ export default class StudentProfile extends React.Component<StudentProfileProps>
                         </div>
                     </div>
                 </div>
-                <div className='flex-grow flex flex-col px-6'>
-                    <Button>Download Resume</Button>
-
-                    <Separator className='mt-4'/>
-
-                    <div className='flex justify-between items-center pt-4'>
-                        <h1 className='text-2xl font-bold'>Experience</h1>
-                        <Button>Add</Button>
-                    </div>
-                    <div className='mt-4'>
-                        <h3 className='text-lg font-bold'>Software Engineer Intern</h3>
-                        <p className='text-gray-500'>Google</p>
-                        <p className='text-gray-500'>2023 - 2024</p>
-                        <p className='mt-2'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                    <div className='mt-4'>
-                        <h3 className='text-lg font-bold'>Software Engineer Intern</h3>
-                        <p className='text-gray-500'>Google</p>
-                        <p className='text-gray-500'>2023 - 2024</p>
-                        <p className='mt-2'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-
-                    <Separator className='mt-4'/>
-
-                    <div className='flex justify-between items-center pt-4'>
-                        <h1 className='text-2xl font-bold'>Projects</h1>
-                        <Button>Add</Button>
-                    </div>
-                    <div className='mt-4'>
-                        <h3 className='text-lg font-bold'>Software Engineer Intern</h3>
-                        <p className='text-gray-500'>Google</p>
-                        <p className='text-gray-500'>2023 - 2024</p>
-                        <p className='mt-2'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-
-                    <Separator className='mt-4'/>
-
-                    <div className='flex justify-between items-center pt-4'>
-                        <h1 className='text-2xl font-bold'>Education</h1>
-                        <Button>Add</Button>
-                    </div>
-                    <div className='mt-4'>
-                        <h3 className='text-lg font-bold'>BSc. Computer Science</h3>
-                        <p className='text-md'>Georgia State University</p>
-                        <p className='text-md'>2020 - 2024</p>
-                        <p className='text-md'>3.9/4.0</p>
-                    </div>
-
-                    <Separator className='mt-4'/>
-
-                    <div className='flex justify-between items-center pt-4'>
-                        <h1 className='text-2xl font-bold'>Skills</h1>
-                        <Button>Add</Button>
-                    </div>
-
-                    <div className='mt-4'>
-                        <p className='text-lg font-bold'>Programming Languages</p>
-                        <p className='text-md'>Python, Java, C++, JavaScript, TypeScript</p>
-                    </div>
+                <div className='flex-grow'>
+                    <StudentInfo/>
                 </div>
             </div>
         </div>

@@ -10,7 +10,7 @@ import {
     NavigationMenuTrigger,
     NavigationMenuViewport,
   } from "@/components/ui/navigation-menu"
-import { ModeToggle } from '../utils/mode_toggle';
+import { ModeToggle } from '../../utils/mode_toggle';
   
 export interface HeaderProps {
 }

@@ -3,9 +3,10 @@ import StudentProfile from "./components/student_profile";
 import Header from "./components/header";
 import StudentLoginPage from "./components/student_login";
 import ResumeUpload from "./components/resume_upload";
+import {SearchBar} from "./components/recruiter_search";
 
 export default function Home() {
   return (
-    <StudentProfile />
+    <SearchBar />
   );
 }

@@ -1,4 +1,4 @@
-#How to run and see the progress - 
+# How to run and see the progress - 
 1. Clone the repository
 2. run - "npm install"
 3. run - "npm run dev"

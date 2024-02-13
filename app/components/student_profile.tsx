@@ -18,7 +18,7 @@ export default class StudentProfile extends React.Component<StudentProfileProps>
                 <Header/>
             </div>
             <div className='flex-grow flex mt-8 w-5/6 mx-auto justify-center'>
-                <div className='flex flex-col max-w-[230px]'>
+                <div className='flex flex-col'>
                     <div className='flex justify-center items-center h-auto w-auto max-h-[260px] max-w-[260px] '>
                         <img src='https://via.placeholder.com/250' alt='profile' className='rounded-full'/>
                     </div>
@@ -26,7 +26,7 @@ export default class StudentProfile extends React.Component<StudentProfileProps>
                         <h1 className='text-2xl font-bold text-center'>John Doe</h1>
                         <h3 className='text-lg text-center text-gray-500'>Student</h3>
                         <Button className='mt-4 w-full'>Edit Profile</Button>
-                        <p className='mt-4 text-center break-words'>Bio. Lorem Ipsum blah blah</p>
+                        <p className='mt-4 text-center break-words max-w-[230px]'>Bio. Lorem Ipsum blah blah</p>
                     </div>
                     <div className='mt-6 flex'>
                         <IoIosSchool className='text-gray-500 mt-1'/>

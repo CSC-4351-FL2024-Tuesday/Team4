@@ -8,9 +8,10 @@ import StudentInfo from "./components/common/student_info";
 import Results from "./components/results";
 import { Result } from "postcss";
 import StudentDashboard from "./components/student_dashboard";
+import RecruiterDashboard from "./components/recruiter_dashboard";
 
 export default function Home() {
   return (
-    <StudentDashboard/>
+    <RecruiterDashboard/>
   );
 }

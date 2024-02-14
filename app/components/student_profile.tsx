@@ -8,6 +8,7 @@ import { MdEmail } from "react-icons/md";
 import { IoIosLink } from "react-icons/io";
 import { Separator } from '@/components/ui/separator';
 import StudentInfo from './common/student_info';
+import { SearchBar } from './recruiter_search';
 export interface StudentProfileProps {
 }
 
@@ -15,6 +16,7 @@ export default class StudentProfile extends React.Component<StudentProfileProps>
   public render() {
     return (
       <div className='flex flex-col h-screen w-screen overflow-x-hidden'>
+        <SearchBar/>
             <div>
                 <Header/>
             </div>

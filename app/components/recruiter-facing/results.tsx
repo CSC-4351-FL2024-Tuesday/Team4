@@ -1,9 +1,9 @@
 "use client";
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable';
 import * as React from 'react';
-import { ResultsList } from '../utils/result_list';
-import { results } from '../utils/data';
-import StudentInfo from './common/student_info';
+import { ResultsList } from '../../utils/result_list';
+import { results } from '../../utils/data';
+import StudentInfo from '../common/student_info';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import FiltersSidebar from './layout/filters_sidebar';
 

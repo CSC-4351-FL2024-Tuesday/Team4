@@ -1,7 +1,7 @@
 "use client";
 import * as React from 'react';
-import DragAndDrop from '../utils/drag_and_drop';
-import Header from './common/header';
+import DragAndDrop from '../../utils/drag_and_drop';
+import Header from '../common/header';
 
 export interface ResumeUploadProps {
 }

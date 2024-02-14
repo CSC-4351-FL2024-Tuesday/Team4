@@ -17,7 +17,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs"
-import Header from './common/header';
+import Header from '../common/header';
 
 const StudentLoginPage: React.FC = () => {
     const [username, setUsername] = useState('');

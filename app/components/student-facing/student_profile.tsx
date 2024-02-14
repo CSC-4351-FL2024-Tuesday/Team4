@@ -1,14 +1,14 @@
 'use client';
 import * as React from 'react';
-import Header from './common/header';
+import Header from '../common/header';
 import { Button } from '@/components/ui/button';
 import { IoIosSchool } from "react-icons/io";
 import { IoLocationSharp } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import { IoIosLink } from "react-icons/io";
 import { Separator } from '@/components/ui/separator';
-import StudentInfo from './common/student_info';
-import { SearchBar } from './recruiter_search';
+import StudentInfo from '../common/student_info';
+import { SearchBar } from '../recruiter-facing/recruiter_search';
 export interface StudentProfileProps {
 }
 

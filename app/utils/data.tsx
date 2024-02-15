@@ -7,6 +7,9 @@ export const results = [
         bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         labels: ["Location", "Experience", "GPA"],
         new: true,
+        position: "Software Engineer Intern",
+        last_message: "What is the expected salary for this position? I am very interested in the position and would love to chat with you about it.",
+        read: false,
     },
     {
         id: "6c84fb90-12c4-11e1-840d-7b25c5ee775b",
@@ -16,6 +19,9 @@ export const results = [
         bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         labels: ["Location", "GPA"],
         new: false,
+        position: "Software Engineer Intern",
+        last_message : "Hey, I saw your profile and I think you would be a great fit for our team. I would love to chat with you about the position and see if you would be interested in joining our team.",
+        read: true,
     },
     {
         id: "6c84fb90-12c4-11e1-840d-7b25c5ee775c",
@@ -25,6 +31,9 @@ export const results = [
         bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         labels: ["Location", "Experience"],
         new: false,
+        position: "Web Developer",
+        last_message : "Hey, I saw your profile and I think you would be a great fit for our team. I would love to chat with you about the position and see if you would be interested in joining our team.",
+        read: true,
     },
     {
         id: "6c84fb90-12c4-11e1-840d-7b25c5ee775d",
@@ -34,6 +43,9 @@ export const results = [
         bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         labels: ["Experience", "GPA"],
         new: true,
+        position: "Risk Analyst",
+        last_message: "Hey, I saw your profile and I think you would be a great fit for our team. I would love to chat with you about the position and see if you would be interested in joining our team.",
+        read: true,
     }    
 ]
 

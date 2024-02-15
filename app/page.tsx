@@ -9,9 +9,13 @@ import Results from "./components/recruiter-facing/results";
 import { Result } from "postcss";
 import StudentDashboard from "./components/student-facing/student_dashboard";
 import RecruiterDashboard from "./components/recruiter-facing/recruiter_dashboard";
+import { Contacts } from "./components/common/contacts";
+import Chat from "./components/common/chat";
+import Messages from "./components/common/messages";
 
 export default function Home() {
   return (
-    <RecruiterDashboard/>
+    //<Contacts items={results}/>
+    <Messages/>
   );
 }

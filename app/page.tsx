@@ -10,12 +10,14 @@ import { Result } from "postcss";
 import StudentDashboard from "./components/student-facing/student_dashboard";
 import RecruiterDashboard from "./components/recruiter-facing/recruiter_dashboard";
 import { Contacts } from "./components/common/contacts";
-import Chat from "./components/common/chat";
+import {Chat} from "./components/common/chat";
 import Messages from "./components/common/messages";
+import Landing from "./components/common/landing";
+import Rhetoricals from "./components/common/rhetoricals_scrolling";
 
 export default function Home() {
   return (
     //<Contacts items={results}/>
-    <Messages/>
+    <Landing/>
   );
 }

@@ -20,7 +20,7 @@ export default class Header extends React.Component<HeaderProps> {
     return (
       <div className='w-screen flex justify-between my-2'>
         {/* logo */}
-        <div className='ml-4'>
+        <div className='ml-4 text-2xl font-sans'>
           CareerSwipe
         </div>
 

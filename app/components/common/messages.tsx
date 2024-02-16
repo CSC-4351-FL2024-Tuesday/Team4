@@ -3,7 +3,7 @@ import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/componen
 import * as React from 'react';
 import { Contacts } from './contacts';
 import { results } from '@/app/utils/data';
-import Chat from './chat';
+import {Chat} from './chat';
 
 export interface  MessagesProps {
 }

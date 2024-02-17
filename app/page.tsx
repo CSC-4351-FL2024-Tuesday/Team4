@@ -1,5 +1,5 @@
 import StudentProfile from "./components/student-facing/student_profile";
-import StudentLoginPage from "./components/student-facing/student_login";
+import StudentLoginPage from "./login/student_login";
 import ResumeUpload from "./components/student-facing/resume_upload";
 import {SearchBar} from "./components/recruiter-facing/recruiter_search";
 import { ResultsList } from "./utils/result_list";
@@ -7,11 +7,10 @@ import { results } from "./utils/data";
 import StudentInfo from "./components/common/student_info";
 import Results from "./components/recruiter-facing/results";
 import { Result } from "postcss";
-import StudentDashboard from "./components/student-facing/student_dashboard";
 import RecruiterDashboard from "./components/recruiter-facing/recruiter_dashboard";
-import { Contacts } from "./components/common/contacts";
-import {Chat} from "./components/common/chat";
-import Messages from "./components/common/messages";
+import { Contacts } from "./messages/contacts";
+import {Chat} from "./messages/chat";
+import Messages from "./messages/page";
 import Landing from "./components/common/landing";
 import Rhetoricals from "./components/common/rhetoricals_scrolling";
 

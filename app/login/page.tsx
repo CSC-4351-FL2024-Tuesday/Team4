@@ -2,8 +2,8 @@
 import { Button } from '@/components/ui/button';
 import * as React from 'react';
 import Header from '../components/common/header';
-import StudentLoginPage from '../components/student-facing/student_login';
-import RecruiterLoginPage from '../components/recruiter-facing/recruiter_login';
+import StudentLoginPage from './student_login';
+import RecruiterLoginPage from './recruiter_login';
 
 export interface ILoginProps {
 }

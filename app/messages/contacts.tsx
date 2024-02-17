@@ -14,7 +14,7 @@ export interface ContactsProps {
 export function Contacts(props: ContactsProps) {
     const [result, setResult] = useResult();
     return (
-        <ScrollArea className='h-screen pt-10'>
+        <ScrollArea className='h-full py-5'>
             <div className='flex flex-col gap-2 p-4 pt-0'>
                 {props.items.map((item) => (
                     <button

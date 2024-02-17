@@ -63,7 +63,7 @@ export function Chat(props: ChatProps)  {
     }
   }
   return (
-      <div className='w-full h-screen'>
+      <div className='w-full h-full'>
         <div className='flex flex-col justify-between items-center h-full'>
             <div className='flex items-center w-full h-20 transition-all hover:bg-accent border gap-2 p-3'>
               <Avatar>

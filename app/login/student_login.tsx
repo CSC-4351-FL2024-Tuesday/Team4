@@ -17,11 +17,18 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs"
-import Header from '../common/header';
+import Header from '../components/common/header';
+import { useRouter } from 'next/navigation';
 
 const StudentLoginPage: React.FC = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+
+    const router = useRouter();
+
+    const handleLoginClick = () => {
+      router.push('/student');
+    };
 
     const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUsername(event.target.value);
@@ -62,7 +69,7 @@ const StudentLoginPage: React.FC = () => {
                         </div>
                     </CardContent>
                     <CardFooter>
-                        <Button>Login</Button>
+                        <Button onClick={handleLoginClick}>Login</Button>
                     </CardFooter>
                     </Card>
                 </TabsContent>

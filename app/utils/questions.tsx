@@ -21,7 +21,7 @@ export const QuestionTitle = ({ children, id, setActiveFeature }: QuestionProps)
 
     return (
         <p ref={ref} className={cn(
-            'py-16 font-heading text-5xl transition-colors duration-300 ease-in-out',
+            'py-28 font-heading text-5xl transition-colors duration-300 ease-in-out',
             isInView ? 'text-neutral-600' : 'text-neutral-300'
         )}>
             {children}

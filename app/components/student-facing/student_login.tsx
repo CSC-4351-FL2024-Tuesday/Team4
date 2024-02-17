@@ -37,11 +37,7 @@ const StudentLoginPage: React.FC = () => {
     };
 
     return (
-    <div className='flex flex-col h-screen w-screen'>
-        <div>
-            <Header />
-        </div>
-        <div className='flex-grow flex justify-center items-center'>
+        <div className='h-full w-full flex justify-center items-center'>
             <Tabs defaultValue="login" className="w-[400px]">
                 <TabsList className="grid w-full grid-cols-2">
                     <TabsTrigger value="login">Login</TabsTrigger>
@@ -99,7 +95,6 @@ const StudentLoginPage: React.FC = () => {
                 </TabsContent>
             </Tabs>
         </div>
-    </div>
     );
 };
 

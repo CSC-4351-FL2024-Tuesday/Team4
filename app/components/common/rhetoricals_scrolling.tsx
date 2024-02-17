@@ -64,7 +64,7 @@ const Rhetoricals = () => {
             </ul>
         </div>
         <div className='w-full sticky top-0 h-screen flex items-center'>
-                <div className='w-1/2 min-w-[460px] relative aspect-square rounded-2xl bg-gray-100'>
+                <div className='w-1/2 min-w-[460px] relative aspect-square rounded-2xl bg-gray-100 shadow-2xl'>
                     <Card className={cn('absolute inset-0 h-full w-full rounded-2xl bg-gradient-to-br', features.find(f => f.id === activeFeature)?.gradient)}>
                         <CardTitle className='pt-5 text-black p-5 text-4xl'>
                             {features.find(f => f.id === activeFeature)?.cardTitle}

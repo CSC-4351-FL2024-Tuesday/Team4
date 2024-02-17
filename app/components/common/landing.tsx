@@ -4,12 +4,19 @@ import { Card, CardContent } from '@/components/ui/card';
 import Rhetoricals from './rhetoricals_scrolling';
 import Header from './header';
 import { IoIosArrowDown } from "react-icons/io";
+import { Button } from '@/components/ui/button';
+import { useRouter } from 'next/navigation';
 
 export interface  LandingProps {
 }
 
-export default class Landing extends React.Component< LandingProps> {
-  public render() {
+function Landing(props: LandingProps) {
+    const router = useRouter();
+
+    const handleLoginClick = () => {
+      router.push('/login');
+    };
+
     return (
       <div className='h-full w-full flex flex-col items-center justify-center relative'>
         <div className='flex flex-col items-center justify-center w-screen h-screen'>
@@ -18,10 +25,14 @@ export default class Landing extends React.Component< LandingProps> {
             <IoIosArrowDown className='text-2xl'/>
         </div>
         <div className='sticky top-0 z-10'>
-            <Header/>
+            <Header>
+              <Button onClick={handleLoginClick}>Login/SignUp</Button>
+            </Header>
         </div>
         <Rhetoricals/>
       </div>
     );
-  }
+
 }
+
+export default Landing;

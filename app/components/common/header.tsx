@@ -13,10 +13,12 @@ import {
 import { ModeToggle } from '../../utils/mode_toggle';
   
 export interface HeaderProps {
+  children?: React.ReactNode;
 }
 
 export default class Header extends React.Component<HeaderProps> {
   public render() {
+    const {children} = this.props;
     return (
       <div className='w-screen flex justify-between my-2'>
         {/* logo */}
@@ -50,6 +52,11 @@ export default class Header extends React.Component<HeaderProps> {
                 </NavigationMenuList>
             </NavigationMenu>
           </div>
+          {children && (
+            <div className='px-2'>
+              {children}
+            </div>
+          )}
           <div>
             <ModeToggle />
           </div>

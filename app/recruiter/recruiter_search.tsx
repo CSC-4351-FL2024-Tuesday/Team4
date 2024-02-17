@@ -1,11 +1,18 @@
 "use client";
 import { Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command';
 import { EnvelopeClosedIcon, GearIcon, PersonIcon } from '@radix-ui/react-icons';
+import { useRouter } from 'next/navigation';
 import * as React from 'react';
 
+export interface SearchBarProps {
+  clicked: boolean;
+}
 
-export function SearchBar() {
-    const [open, setOpen] = React.useState(false)
+function SearchBar(props: SearchBarProps) {
+  const { clicked } = props;
+  const [open, setOpen] = React.useState(clicked)
+
+  const router = useRouter();
  
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -18,6 +25,10 @@ export function SearchBar() {
     return () => document.removeEventListener("keydown", down)
   }, [])
  
+  const handleSearchItem=()=>{
+    router.push("/recruiter/results");
+  };
+
   return (
     <>
     <CommandDialog open={open} onOpenChange={setOpen}>
@@ -25,7 +36,7 @@ export function SearchBar() {
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Suggestions">
-          <CommandItem>Software Engineer</CommandItem>
+          <CommandItem onSelect={handleSearchItem}>Software Engineer</CommandItem>
           <CommandItem>Web Developer</CommandItem>
           <CommandItem>Risk Analayst</CommandItem>
         </CommandGroup>
@@ -48,3 +59,4 @@ export function SearchBar() {
     </>
   )
 }
+export default SearchBar;

@@ -48,7 +48,7 @@ function Login(props: ILoginProps) {
                 </div>
             ) : (
                 <div className='flex-grow h-full w-full flex items-center justify-center'>
-                    <StudentLoginPage />
+                    <RecruiterLoginPage />
                 </div>
             )
         }

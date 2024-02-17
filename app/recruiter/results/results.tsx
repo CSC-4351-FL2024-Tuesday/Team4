@@ -3,7 +3,7 @@ import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/componen
 import * as React from 'react';
 import { ResultsList } from '../../utils/result_list';
 import { results } from '../../utils/data';
-import StudentInfo from '../common/student_info';
+import StudentInfo from '../../components/common/student_info';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import FiltersSidebar from './layout/filters_sidebar';
 

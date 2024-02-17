@@ -6,6 +6,8 @@ import { it } from 'node:test';
 import * as React from 'react';
 import { Results } from './data';
 import { useResult } from '@/lib/use-results';
+import { Button } from '@/components/ui/button';
+import { useRouter } from 'next/navigation';
 
 export interface ResultListProps {
     items: Results[];
@@ -13,6 +15,10 @@ export interface ResultListProps {
 
 export function ResultsList(props: ResultListProps) {
     const [result, setResult] = useResult();
+    const router = useRouter();
+    const handleMessagesClick = () => {
+        router.push("/messages");
+    };
     return (
         <ScrollArea className='h-screen pt-10'>
             <div className='flex flex-col gap-2 p-4 pt-0'>
@@ -26,11 +32,14 @@ export function ResultsList(props: ResultListProps) {
                     >
                         <div className='flex w-full flex-col gap-1'>
                             <div className='flex items-center'>
-                                <div className='flex items-center gap-2'>
+                                <div className='flex items-center gap-2 w-full'>
                                     <div className='font-semibold'>{item.name}</div>
                                     {item.new && (
                                         <span className='flex h-2 w-2 rounded-full bg-blue-600'/>
                                     )}
+                                    <div className='flex-grow flex items-end justify-end'>
+                                        <Button onClick={handleMessagesClick} >Message</Button>
+                                    </div>
                                 </div>
                             </div>
                             <div className='text-xs font-medium'>{item.university}</div>

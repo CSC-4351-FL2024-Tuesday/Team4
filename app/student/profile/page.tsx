@@ -1,6 +1,6 @@
 "use client";
 import * as React from 'react';
-import StudentProfile from '../../components/student-facing/student_profile';
+import StudentProfile from './student_profile';
 
 export interface IStudentProfilePageProps {
 }

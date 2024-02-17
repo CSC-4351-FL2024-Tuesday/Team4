@@ -1,14 +1,13 @@
 'use client';
 import * as React from 'react';
-import Header from '../common/header';
+import Header from '../../components/common/header';
 import { Button } from '@/components/ui/button';
 import { IoIosSchool } from "react-icons/io";
 import { IoLocationSharp } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import { IoIosLink } from "react-icons/io";
 import { Separator } from '@/components/ui/separator';
-import StudentInfo from '../common/student_info';
-import { SearchBar } from '../recruiter-facing/recruiter_search';
+import StudentInfo from '../../components/common/student_info';
 export interface StudentProfileProps {
 }
 
@@ -16,7 +15,6 @@ export default class StudentProfile extends React.Component<StudentProfileProps>
   public render() {
     return (
       <div className='flex flex-col h-screen w-screen overflow-x-hidden'>
-        <SearchBar/>
             <div>
                 <Header/>
             </div>

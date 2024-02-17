@@ -30,6 +30,10 @@ const StudentLoginPage: React.FC = () => {
       router.push('/student');
     };
 
+    const handleSignupClick = () => {
+        router.push('/student/signup');
+    };
+
     const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUsername(event.target.value);
     };
@@ -96,7 +100,7 @@ const StudentLoginPage: React.FC = () => {
                         </div>
                     </CardContent>
                     <CardFooter>
-                        <Button>Sign Up</Button>
+                        <Button onClick={handleSignupClick}>Sign Up</Button>
                     </CardFooter>
                     </Card>
                 </TabsContent>

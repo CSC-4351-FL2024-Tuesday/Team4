@@ -31,7 +31,7 @@ const RecruiterLoginPage: React.FC = () => {
     };
 
     const handleSignupClick = () => {
-        router.push('/student/signup');
+        router.push('/recruiter/registeration');
     };
 
     const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {

@@ -8,6 +8,7 @@ import { MdEmail } from "react-icons/md";
 import { IoIosLink } from "react-icons/io";
 import { Separator } from '@/components/ui/separator';
 import StudentInfo from '../../components/common/student_info';
+import Image from 'next/image';
 export interface StudentProfileProps {
 }
 
@@ -21,7 +22,7 @@ export default class StudentProfile extends React.Component<StudentProfileProps>
             <div className='flex-grow flex mt-8 w-5/6 mx-auto justify-center'>
                 <div className='flex flex-col'>
                     <div className='flex justify-center items-center h-auto w-auto max-h-[260px] max-w-[260px] '>
-                        <img src='https://via.placeholder.com/250' alt='profile' className='rounded-full'/>
+                        <Image src='https://via.placeholder.com/250' alt='profile' className='rounded-full'/>
                     </div>
                     <div className='mt-4'>
                         <h1 className='text-2xl font-bold text-center'>John Doe</h1>

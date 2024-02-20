@@ -40,7 +40,7 @@ const features = [
             Our platform simplifies recruitment to three easy steps:
             <ol>
                 <li><b>1. For Students</b> - Sign up, upload your resume, and answer a few questions. Our AI does the rest, making your profile visible to top recruiters.</li>
-                <li><b>2. For Employers</b> - Define your ideal candidate criteria using our intuitive filters. Whether you seek specific skills, experiences, or academic achievements, we've got you covered.</li>
+                <li><b>2. For Employers</b> - Define your ideal candidate criteria using our intuitive filters. Whether you seek specific skills, experiences, or academic achievements, we have got you covered.</li>
                 <li><b>3. Connect</b> - Our system curates a list of candidates that fit your criteria. Review their detailed profiles and connect with your future team members with just a click.</li>
             </ol>
         </div>,

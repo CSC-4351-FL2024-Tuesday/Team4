@@ -1,0 +1,6 @@
+1. Give the answer in bullet points and one word: Give candidates information such as: Name, Email, LinkedIn, Github, and Location.
+2. Give the answer in bullet points and one word: Give candidates information such as: University, GPA, Major and Minor.
+3. Give the answer in bullet points: Give candidates information such as: Coding Languages, Software Libraries, Software Concept, Software Framework.
+4. Give the answer in bullet points and one word: Candidate's Work Places.
+5. Give the answer in bullet points and name of: Give candidates information such as: Projects names and their links.
+6. Give the answer in bullet points and name of: Give candidates information such as: Extracurricular Activities

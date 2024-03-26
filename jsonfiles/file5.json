@@ -1,0 +1,127 @@
+
+{
+  "Personal Info": {
+    "Name": "Nishchay Patel",
+    "Email": "nishchay22.03.2003@gmail.com",
+    "Phone Number": "+1 (404)-353-7022",
+    "Location": "Atlanta, GA"
+  },
+  "Education": {
+    "Universities": [
+      "Georgia State University (Honors)"
+    ],
+    "GPA/Grade": "3.90 (Scale: 4.0)",
+    "Major": "Computer Science",
+    "Minor": "Data Science"
+  },
+  "Skills": {
+    "Programming": [
+      "Python",
+      "Java",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "SQL",
+      "C",
+      "R"
+    ],
+    "Technological": [
+      "TensorFlow",
+      "AWS",
+      "Microsoft Azure",
+      "Firebase",
+      "Kubernetes"
+    ],
+    "Behavioural": [
+      "Leadership",
+      "Communication",
+      "Strategy",
+      "Adaptability",
+      "Critical Thinking"
+    ]
+  },
+  "Work Experience": [
+    {
+      "Position": "Software Support Specialist",
+      "Company": "Instructional Innovation & Technology, GSU",
+      "Location": "Atlanta, Georgia",
+      "Dates": "September 2022 - Present",
+      "Summary": "Enhanced software and website functionality, increasing employee satisfaction by 95%. Implemented Trellix encryption to strengthen data security by 80%. Utilized web-based ticketing system to improve client satisfaction by 90%."
+    },
+    {
+      "Position": "Software Engineer (Student)",
+      "Company": "Evidence Based Cybersecurity Research Group, GSU",
+      "Location": "Atlanta, Georgia",
+      "Dates": "September 2023 - Present",
+      "Summary": "Analyzed data using NumPy, Pandas, and Scikit-learn, improving data accuracy by 95%. Developed predictive models using Python, increasing predictive accuracy by 70%. Tailored data analytics to meet research requirements, enhancing research quality by 30%."
+    },
+    {
+      "Position": "Data Analyst",
+      "Company": "Deep Learning Research Group, GSU",
+      "Location": "Atlanta, Georgia",
+      "Dates": "August 2022 - September 2022",
+      "Summary": "Enhanced early cancer detection by 85% using TensorFlow and neural networks. Created intuitive data visualizations using Python, increasing comprehension by over 30%. Contributed to project presentations and summaries, boosting productivity by 30%."
+    }
+  ],
+  "Extracurricular Activities and Hobbies": [
+    {
+      "Activity": "Association for Computing Machinery (Publicity Chair)",
+      "Role": "Led campus events, increasing student enrollment by 60%."
+    },
+    {
+      "Activity": "Volunteering: Dream Foundation",
+      "Role": "Provided assistance at food stalls during Mercedes Benz Stadium events."
+    },
+    {
+      "Activity": "Badminton Club",
+      "Role": "Represented Georgia State University in badminton competitions."
+    },
+    {
+      "Activity": "Stock Market",
+      "Role": "Hobby"
+    },
+    {
+      "Activity": "Geopolitics",
+      "Role": "Hobby"
+    },
+    {
+      "Activity": "Gym",
+      "Role": "Hobby"
+    },
+    {
+      "Activity": "Basketball",
+      "Role": "Hobby"
+    },
+    {
+      "Activity": "Soccer",
+      "Role": "Hobby"
+    },
+    {
+      "Activity": "Cricket",
+      "Role": "Hobby"
+    },
+    {
+      "Activity": "Badminton",
+      "Role": "Hobby"
+    },
+    {
+      "Activity": "Swimming",
+      "Role": "Hobby"
+    }
+  ],
+  "Links": [
+    "linkedin.com/in/nishchay-pat",
+    "github.com/Nishchaypat",
+    "github.com/Nishchaypat/Movie-Quote-Search",
+    "github.com/Nishchaypat/Premier_League_Prediction",
+    "github.com/Nishchaypat/Rainbow-Promise",
+    "github.com/Nishchaypat/Self_Driving_Car"
+  ],
+  "Suggestions": [
+    "Software Engineer",
+    "Data Scientist",
+    "Machine Learning Engineer",
+    "Cloud Architect",
+    "Full Stack Developer"
+  ]
+}

@@ -1,0 +1,83 @@
+
+{
+  "Personal Info": {
+    "Name": "Mack Crolanguage",
+    "Email": "mackcrol@gmail.com",
+    "Phone Number": "844-555-2626",
+    "Location": "Not specified"
+  },
+  "Education": {
+    "Universities": [
+      "Carnegie Mellon University",
+      "Birla Institute of Technology and Science"
+    ],
+    "GPA/Grade": "Not specified",
+    "Major": "Computer Science",
+    "Minor": "M.Sc. Economics"
+  },
+  "Skills": {
+    "Programming/Scripting Languages": [
+      "Java",
+      "Python",
+      "C",
+      "SQL",
+      "JavaScript",
+      "MATLAB",
+      "Perl"
+    ],
+    "Technological Skills": [
+      "Hadoop",
+      "Django",
+      "DKPro for NLP",
+      "Maven",
+      "Git"
+    ],
+    "Behavioral Skills": [
+      "Not specified"
+    ]
+  },
+  "Work Experience": [
+    {
+      "Position": "Software Engineering Intern",
+      "Company": "Yahoo! Inc.",
+      "Location": "Sunnyvale, CA",
+      "Dates": "May - August 2015",
+      "Summary": "Interned with the user data team, part of cloud services at Yahoo!"
+    },
+    {
+      "Position": "Research Intern",
+      "Company": "Ubiquitous Knowledge Processing Lab, TU Darmstadt",
+      "Location": "Germany",
+      "Dates": "January - June 2014",
+      "Summary": "Developed an application using the DKPro library to automatically solve multiple-choice reading comprehension questions"
+    },
+    {
+      "Position": "Research Student",
+      "Company": "Computer Engineering and Networks Laboratory, ETH Zurich",
+      "Location": "Switzerland",
+      "Dates": "July - December 2013",
+      "Summary": "Developed an application using tree-based learning algorithms to model deadline hit and miss patterns of periodic real-time tasks"
+    },
+    {
+      "Position": "Developer (Google Summer of Code)",
+      "Company": "National Resource for Network Biology (NRNB)",
+      "Location": "Not specified",
+      "Dates": "Summer 2012",
+      "Summary": "Built an app for Cytoscape software to visually analyze and modify molecular interaction networks"
+    }
+  ],
+  "Extracurricular Activities and Hobbies": {
+    "Activity": "Not specified",
+    "Role": "Not specified"
+  },
+  "Links": [
+    "Not specified"
+  ],
+  "Suggestions": [
+    "Software Engineer",
+    "Data Scientist",
+    "Machine Learning Engineer",
+    "Cloud Engineer",
+    "Research Scientist"
+  ]
+}

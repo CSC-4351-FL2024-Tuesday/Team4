@@ -1,0 +1,114 @@
+
+{
+  "Personal Info": {
+    "Name": "Jainam Shah",
+    "Email": "jainamh1022@outlook.com",
+    "Phone Number": "470-318-0327",
+    "Location": "Atlanta, Georgia"
+  },
+  "Education": {
+    "Universities": [
+      "Georgia State University Honors College"
+    ],
+    "GPA/Grade": "3.78",
+    "Major": "Computer Science",
+    "Minor": "Data Science"
+  },
+  "Skills": {
+    "Programming Skills": [
+      "Java",
+      "SQL",
+      "JavaScript",
+      "Python",
+      "C",
+      "HTML",
+      "R"
+    ],
+    "Technological Skills": [
+      "VS Code",
+      "Tableau",
+      "Power BI",
+      "Eclipse",
+      "Agile",
+      "Git",
+      "Linux",
+      "PyCharm",
+      "Microsoft Suite",
+      "Adobe Creative Suite",
+      "CAD"
+    ],
+    "Behavioural Skills": [
+      "Presenting",
+      "Analytical",
+      "Problem-Solving",
+      "Adaptive",
+      "Flexible",
+      "Active Listening",
+      "Critical Thinking"
+    ]
+  },
+  "Work Experience": [
+    {
+      "Position": "STEM Mentor",
+      "Company": "Lavner Education",
+      "Location": "Remote",
+      "Dates": "Oct 2023 - Present",
+      "Summary": "Deliver personalized, engaging online STEM lessons, promote STEM subjects for diverse students, inspire young and future STEM leaders."
+    },
+    {
+      "Position": "Undergraduate Teaching and Lab Assistant",
+      "Company": "Georgia State University",
+      "Location": "Atlanta, GA",
+      "Dates": "Feb 2023 - Present",
+      "Summary": "Resolve technical issues and maintain computer equipment, tutor and proctor math classes, address student questions and concerns, motivate and engage students."
+    },
+    {
+      "Position": "Information Technology Internship",
+      "Company": "Lavner Education",
+      "Location": "Atlanta, GA",
+      "Dates": "Jun 2023 - Jul 2023",
+      "Summary": "Provided guidance in STEM fields, assisted in setting up and managing computer equipment, assisted with coding and project backup, proposed solutions and provided technical assistance."
+    }
+  ],
+  "Extracurricular Activities and Hobbies": [
+    {
+      "Activity": "Treasurer",
+      "Role": "Indian Student Organization"
+    },
+    {
+      "Activity": "Participant",
+      "Role": "Georgia State University Hackathon"
+    },
+    {
+      "Activity": "Participant",
+      "Role": "Hack Georgia Tech"
+    },
+    {
+      "Activity": "Member",
+      "Role": "Panther LEAP"
+    },
+    {
+      "Activity": "Member",
+      "Role": "LEAD Team"
+    },
+    {
+      "Activity": "Member",
+      "Role": "Indian Cultural Club (GSU)"
+    },
+    {
+      "Activity": "Member",
+      "Role": "Young Jains of America (YJA)"
+    }
+  ],
+  "Links": {
+    "LinkedIn": "www.linkedin.com/in/jainam-s-",
+    "GitHub": "https://github.com/jainam1022"
+  },
+  "Suggestions": [
+    "Data Scientist",
+    "Software Engineer",
+    "Data Analyst",
+    "Web Developer",
+    "Machine Learning Engineer"
+  ]
+}

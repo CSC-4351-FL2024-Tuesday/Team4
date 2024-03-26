@@ -1,0 +1,92 @@
+
+{
+  "Personal Info": {
+    "Name": "Manish Kolla",
+    "Email": "maneeshkolla2003@gmail.com",
+    "Phone Number": "+1 (470) -647-9715",
+    "Location": "Atlanta, Georgia"
+  },
+  "Education": {
+    "Universities": [
+      "Georgia State University (Honors College), Atlanta, GA"
+    ],
+    "GPA/Grade": "3.88",
+    "Major": "Computer Science",
+    "Minor": "Data Science"
+  },
+  "Skills": {
+    "Programming Skills": [
+      "Python",
+      "R",
+      "C",
+      "MySQL",
+      "NoSQL",
+      "C#",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "Technological Skills": [
+      "Anaconda",
+      "Data Mining",
+      "Natural Language Processing (NLP)",
+      "Deep Learning",
+      "Machine Learning (ML)"
+    ],
+    "Behavioural Skills": [
+      "Agile Project Management",
+      "Scrum Management",
+      "Risk Management",
+      "Budgeting and Procurement",
+      "Communication"
+    ]
+  },
+  "Work Experience": [
+    {
+      "Position": "Undergraduate Research Analyst/Data Scientist Profile",
+      "Company": "Evidence Based Cybersecurity Research Group (EBCS)",
+      "Location": "Atlanta, GA",
+      "Dates": "September 2022 - Present",
+      "Summary": "* Developed and implemented a web automation framework to retrieve data from Clearnet, Darknet, and Telegram using Selenium and Chrome/Tor web drivers\n* Increased workflow efficiency by 60% and accuracy up to 90% in scraping web forums using the Extract-Transform-Load (ETL) process\n* Leveraged Machine Learning, Deep Learning, and NLP to build models that identify patterns and trends in data\n* Used predictive analysis and trained neural networks to forecast emerging catastrophes from underground markets\n* Managed a team of 6 data scientists, fostering collaboration and ensuring project alignment\n* Presented findings and progress reports to sponsors, contributing to project success"
+    },
+    {
+      "Position": "Mathematics Tutor Profile",
+      "Company": "Department of Mathematics and Statistics, GSU",
+      "Location": "Atlanta, GA",
+      "Dates": "January 2022 - Present",
+      "Summary": "* Assisted students in a class size of 40-50 with mathematics doubts and taught challenging topics\n* Interacted with professors during lectures and proctored examinations\n* Organized group study sessions for struggling students\n* Tutored over 500 students and received the \"Best Tutor Award for Academic Year Fall 2023\""
+    },
+    {
+      "Position": "Information Technology Intern",
+      "Company": "Lavner Education",
+      "Location": "Atlanta, GA",
+      "Dates": "June 2023 - August 2023",
+      "Summary": "* Maintained on-site computer hardware, including desktops, laptops, printers, and peripherals\n* Taught and graded assignments for 50 middle/high school students in Python, C, Machine Learning, and Artificial Intelligence\n* Debugged student codes and provided technical support\n* Communicated with headquarters and resolved issues promptly"
+    }
+  ],
+  "Extracurricular Activities and Hobbies": [
+    {
+      "Activity": "Indian Student Organization",
+      "Role": "President"
+    },
+    {
+      "Activity": "Association for Computing Machinery",
+      "Role": "Member"
+    },
+    {
+      "Activity": "Mathematical Association of America",
+      "Role": "Member"
+    }
+  ],
+  "Links": [
+    "https://www.linkedin.com/in/manishkolla/",
+    "https://github.com/manishkolla"
+  ],
+  "Suggestions": [
+    "Data Scientist",
+    "Machine Learning Engineer",
+    "Software Engineer",
+    "Data Analyst",
+    "Business Intelligence Analyst"
+  ]
+}

@@ -1,0 +1,73 @@
+
+{
+  "Personal Info": {
+    "Name": "Puneet Bajaj",
+    "Email": "puneet.internships@gmail.com",
+    "Phone Number": "(470)-815-2746",
+    "Location": "Atlanta, GA"
+  },
+  "Education": {
+    "Universities": [
+      "Georgia State University"
+    ],
+    "GPA/Grade": "3.82",
+    "Major": "Computer Science",
+    "Minor": "N/A"
+  },
+  "Skills": {
+    "Programming Languages": [
+      "JavaScript",
+      "TypeScript",
+      "Java",
+      "Python",
+      "HTML",
+      "CSS",
+      "Dart",
+      "Swift"
+    ],
+    "Technological Skills": [
+      "PyTorch",
+      "React",
+      "NextJS",
+      "Material-UI",
+      "Tailwind-CSS"
+    ],
+    "Behavioural Skills": [
+      "N/A"
+    ]
+  },
+  "Work Experience": [
+    {
+      "Position": "Mobile App Developer",
+      "Company": "AMAILab, Georgia State University",
+      "Location": "Atlanta, GA",
+      "Dates": "February 2024 - Present",
+      "Summary": "Developed a mobile app using Flutter to apply the lab's emotion detection algorithm in a user-friendly format."
+    },
+    {
+      "Position": "Lead Makerspace Assistant",
+      "Company": "EXLab, Georgia State University",
+      "Location": "Atlanta, GA",
+      "Dates": "August 2022 - Present",
+      "Summary": "Provided technical support for various makerspace equipment. Conducted training sessions and workshops. Led a team of 12 individuals in two makerspaces on campus."
+    }
+  ],
+  "Extracurricular Activities and Hobbies": [
+    {
+      "Activity": "N/A",
+      "Role": "N/A"
+    }
+  ],
+  "Links": [
+    "linkedin.com/in/puneetkumarbajaj/",
+    "github.com/puneetkumarbajaj",
+    "www.puneetbajaj.com"
+  ],
+  "Suggestions": [
+    "Mobile App Developer",
+    "Software Engineer",
+    "Full-Stack Developer",
+    "Data Scientist",
+    "Machine Learning Engineer"
+  ]
+}

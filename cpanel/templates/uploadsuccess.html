@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+
+    <title>Success</title>
+
+  </head>
+  <body>
+    Upload Success 
+    <h1>File Contents:</h1>
+    <ul>
+      {% for line in file %}
+          <li>{{ line }}</li>
+          <ul>
+                  <li>{{ file[line] }}</li>
+          </ul>
+      {% endfor %}
+  </ul>
+  </body>
+</html>

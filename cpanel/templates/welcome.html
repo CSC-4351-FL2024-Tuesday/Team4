@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+
+    <title>SignIn</title>
+    <style>
+      div{
+        position: absolute;
+        left: 5px;
+        top: 40px;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div>
+      <br>
+      <br>
+      <button type='button'onclick="location.href='{% url 'log' %}'">Logout</button>
+    </div>
+    Welcome {{e}}
+
+    <form action="/uploadfile/" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="file" name="file">
+      <input type="submit" value="Upload File">
+    </form>
+  </body>
+</html>

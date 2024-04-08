@@ -1,28 +1,96 @@
-{% if message %}
-<script>
-  alert('{{message}}')
-</script>
-{% endif %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
-
-    <title>SignUp</title>
-
-  </head>
-  <body>
-    <form action="/postsignup/" method='post'>
-      {% csrf_token %}
-        Name: 
-        <input type="text" name="name"><br><br> 
-        Email:
-        <input type="email" placeholder="Only Use Student Email" name='email'><br><br>
-        Password:
-        <input type='Password' name='Password'> <br><br>
-        Confirm Password:
-        <input type='Password' name='confirmpassword'> <br><br>
-        <input type='submit' value='signup'>
-    </form>
-  </body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - CareerSwipe</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 350px;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .container h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        .container form {
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #495057;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            outline: none;
+        }
+        .form-group input[type="submit"] {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .form-group input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Join CareerSwipe</h1>
+        {% if message %}
+        <script>
+            alert('{{ message }}');
+        </script>
+        {% endif %}
+        <form action="/postsignup/" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your student email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <div class="form-group">
+                <label for="confirmpassword">Confirm Password:</label>
+                <input type="password" id="confirmpassword" name="confirmpassword">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Sign Up">
+            </div>
+        </form>
+    </div>
+</body>
 </html>

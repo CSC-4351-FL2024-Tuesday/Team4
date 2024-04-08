@@ -1,27 +1,106 @@
-{% if message %}
-<script>
-  alert('{{message}}')
-</script>
-{% endif %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
-
-    <title>SignIn</title>
-
-  </head>
-  <body>
-    <form action="/postsignin/" method='post'>
-      {% csrf_token %}
-        Email:
-        <input type="email" name='email'><br><br>
-        Password:
-        <input type='Password' name='Password'> <br><br>
-        <input type='submit' value='SignIn'>
-    </form>
-    <button type="'button"onclick="location.href='{% url 'signup' %}'">SignUp With Email</button><br><br>
-
-    <button type="'button"onclick="location.href='{% url 'forgotpassword' %}'">Forgot Password</button><br><br>
-  </body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - CareerSwipe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 350px;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .container h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        .container form {
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #495057;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            outline: none;
+        }
+        .form-group input[type="submit"] {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .form-group input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .btn-group button {
+            margin-right: 10px;
+            background-color: #6c757d;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn-group button:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to CareerSwipe</h1>
+        {% if message %}
+        <script>
+            alert('{{ message }}');
+        </script>
+        {% endif %}
+        <form action="/postsignin/" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Sign In">
+            </div>
+        </form>
+        <div class="btn-group">
+            <button onclick="location.href='{% url 'signup' %}'">Sign Up With Email</button>
+            <button onclick="location.href='{% url 'forgotpassword' %}'">Forgot Password</button>
+        </div>
+    </div>
+</body>
 </html>

@@ -1,21 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
-
-    <title>Success</title>
-
-  </head>
-  <body>
-    Upload Success 
-    <h1>File Contents:</h1>
-    <ul>
-      {% for line in file %}
-          <li>{{ line }}</li>
-          <ul>
-                  <li>{{ file[line] }}</li>
-          </ul>
-      {% endfor %}
-  </ul>
-  </body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success - CareerSwipe</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 350px;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .container h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        .container ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+            text-align: left;
+        }
+        .container ul li {
+            margin-bottom: 10px;
+            color: #495057;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Success</h1>
+        <h2>File Contents:</h2>
+        <ul>
+            {% for line in file %}
+                <li>{{ line }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
 </html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filtered Candidates</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100vh;
+      margin: 0;
+      background-color: #f2f2f2;
+    }
+
+    .container {
+      display: flex;
+      max-width: 1200px;
+      margin-top: 20px;
+    }
+
+    .candidates-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .candidate {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .candidate:hover {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .details-column {
+      flex: 2;
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    p {
+      margin: 5px 0;
+    }
+
+    .skills {
+      font-style: italic;
+    }
+
+    .details {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .skills-list {
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .skill-item {
+      background-color: #f0f0f0;
+      color: #333;
+      border-radius: 20px;
+      padding: 5px 10px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="candidates-column">
+      <h1>Filtered Candidates</h1>
+      <div class="candidate" onclick="showCandidateDetails('John Doe', 'Computer Science', '3.8', ['Java', 'Python', 'HTML'], 'Georgia State University', '6 months')">
+        <h2>John Doe</h2>
+        <p>GPA: 3.8</p>
+        <p>Major: Computer Science</p>
+        <p>University: Georgia State University</p>
+        <p>Total Experience: 6 months</p>
+        <p class="skills">Skills: Java, Python, HTML</p>
+      </div>
+      <!-- Add more candidates here -->
+      <div class="candidate" onclick="showCandidateDetails('Jane Smith', 'Data Science', '3.9', ['Python', 'R', 'SQL'], 'Georgia Institute of Technology', '12 months')">
+        <h2>Jane Smith</h2>
+        <p>GPA: 3.9</p>
+        <p>Major: Data Science</p>
+        <p>University: Georgia Institute of Technology</p>
+        <p>Total Experience: 12 months</p>
+        <p class="skills">Skills: Python, R, SQL</p>
+      </div>
+      <div class="candidate" onclick="showCandidateDetails('Alice Johnson', 'Electrical Engineering', '3.7', ['C++', 'MATLAB', 'Verilog'], 'Stanford University', '8 months')">
+        <h2>Alice Johnson</h2>
+        <p>GPA: 3.7</p>
+        <p>Major: Electrical Engineering</p>
+        <p>University: Stanford University</p>
+        <p>Total Experience: 8 months</p>
+        <p class="skills">Skills: C++, MATLAB, Verilog</p>
+      </div>
+      <div class="candidate" onclick="showCandidateDetails('Bob Brown', 'Mechanical Engineering', '3.5', ['AutoCAD', 'SolidWorks', 'ANSYS'], 'Massachusetts Institute of Technology', '10 months')">
+        <h2>Bob Brown</h2>
+        <p>GPA: 3.5</p>
+        <p>Major: Mechanical Engineering</p>
+        <p>University: Massachusetts Institute of Technology</p>
+        <p>Total Experience: 10 months</p>
+        <p class="skills">Skills: AutoCAD, SolidWorks, ANSYS</p>
+      </div>
+      <div class="candidate" onclick="showCandidateDetails('Emily Clark', 'Business Administration', '3.6', ['Marketing', 'Finance', 'Leadership'], 'Harvard University', '7 months')">
+        <h2>Emily Clark</h2>
+        <p>GPA: 3.6</p>
+        <p>Major: Business Administration</p>
+        <p>University: Harvard University</p>
+        <p>Total Experience: 7 months</p>
+        <p class="skills">Skills: Marketing, Finance, Leadership</p>
+      </div>
+      <div class="candidate" onclick="showCandidateDetails('Michael Lee', 'Computer Engineering', '3.9', ['C', 'C#', 'Assembly'], 'California Institute of Technology', '9 months')">
+        <h2>Michael Lee</h2>
+        <p>GPA: 3.9</p>
+        <p>Major: Computer Engineering</p>
+        <p>University: California Institute of Technology</p>
+        <p>Total Experience: 9 months</p>
+        <p class="skills">Skills: C, C#, Assembly</p>
+      </div>
+    </div>
+    </div>
+    <div class="details-column">
+      <h1>Candidate Details</h1>
+      <div class="details" id="candidateDetails">
+        Select a candidate to view details
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showCandidateDetails(name, major, gpa, skills, university, experience) {
+      const detailsColumn = document.querySelector('.details-column');
+      const candidateDetails = document.getElementById('candidateDetails');
+      // Example data for candidate details
+      const candidateData = {
+        name: name,
+        major: major,
+        gpa: gpa,
+        skills: skills,
+        university: university,
+        experience: experience
+      };
+
+      // Clear previous details
+      candidateDetails.innerHTML = '';
+
+      // Create elements to display candidate details
+      const nameElement = document.createElement('h2');
+      nameElement.textContent = candidateData.name;
+
+      const majorElement = document.createElement('p');
+      majorElement.textContent = `Major: ${candidateData.major}`;
+
+      const gpaElement = document.createElement('p');
+      gpaElement.textContent = `GPA: ${candidateData.gpa}`;
+
+      const universityElement = document.createElement('p');
+      universityElement.textContent = `University: ${candidateData.university}`;
+
+      const experienceElement = document.createElement('p');
+      experienceElement.textContent = `Total Experience: ${candidateData.experience}`;
+
+      const skillsElement = document.createElement('ul');
+      skillsElement.classList.add('skills-list');
+      candidateData.skills.forEach(skill => {
+        const skillItem = document.createElement('li');
+        skillItem.textContent = skill;
+        skillItem.classList.add('skill-item');
+        skillsElement.appendChild(skillItem);
+      });
+
+      // Append elements to candidate details
+      candidateDetails.appendChild(nameElement);
+      candidateDetails.appendChild(majorElement);
+      candidateDetails.appendChild(gpaElement);
+      candidateDetails.appendChild(universityElement);
+      candidateDetails.appendChild(experienceElement);
+      candidateDetails.appendChild(document.createElement('hr')); // Add horizontal line for separation
+      candidateDetails.appendChild(document.createElement('h3')).textContent = 'Skills:';
+      candidateDetails.appendChild(skillsElement);
+
+      // Scroll to the top of the details column
+      detailsColumn.scrollTop = 0;
+    }
+  </script>
+</body>
+</html>

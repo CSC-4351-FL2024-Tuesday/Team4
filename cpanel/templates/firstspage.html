@@ -18,7 +18,7 @@
             height: 100vh;
         }
         .container {
-            width: 350px;
+            width: 500px;
             padding: 30px;
             background-color: #ffffff;
             border-radius: 10px;
@@ -83,7 +83,9 @@
         .btn-group button:hover {
             background-color: #5a6268;
         }
-
+        #email::placeholder {
+            text-align: center; /* Align the placeholder text */
+        }
         /* Added for background strip */
         .background-strip {
             position: absolute;
@@ -118,32 +120,12 @@
             }
         }
     </style>
-</head>
-<body>
     <div class="container">
         <h1>Welcome to CareerSwipe</h1>
-        {% if message %}
-        <script>
-            alert('{{ message }}');
-        </script>
-        {% endif %}
-        <form action="/postsignin/" method="post">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Sign In">
-            </div>
-        </form>
         <div class="btn-group">
-            <button onclick="location.href='{% url 'signup' %}'">Sign Up With Email</button>
-            <button onclick="location.href='{% url 'forgotpassword' %}'">Forgot Password</button>
+            <button onclick="location.href='{% url 'signin' %}'">Student</button>
+            <button onclick="location.href='{% url 'Rsignin' %}'">Recruiter</button>
+            <!-- button onclick="window.location.href = 'recruiter_signup.html';">Recruiter</button -->
         </div>
     </div>
     <div class="background-strip"></div> <!-- Added for background strip -->

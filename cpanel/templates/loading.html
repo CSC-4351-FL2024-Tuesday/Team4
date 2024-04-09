@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In - CareerSwipe</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Loading Page</title>
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -117,56 +116,65 @@
                 color: #ffffff; /* Light text color */
             }
         }
+        .upload-button, .submit-button {
+            display: inline-block;
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none; /* Remove default button border */
+            margin-right: 10px; /* Adjust margin between buttons */
+        }
+
+        .upload-button:hover, .submit-button:hover {
+            background-color: #5a6268;
+        }
+        .logout-btn {
+            position: fixed;
+            bottom: 150px; /* Adjust the distance from the bottom of the page */
+            left: 50%; /* Align horizontally in the center */
+            transform: translateX(-50%); /* Center horizontally */
+            background-color: #343a40;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: #5a6268;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to CareerSwipe</h1>
-        {% if message %}
-        <script>
-            alert('{{ message }}');
-        </script>
-        {% endif %}
-        <form action="/postsignin/" method="post">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Sign In">
-            </div>
-        </form>
-        <div class="btn-group">
-            <button onclick="location.href='{% url 'signup' %}'">Sign Up With Email</button>
-            <button onclick="location.href='{% url 'forgotpassword' %}'">Forgot Password</button>
-        </div>
+        <div class="background-strip"></div>
+        <div class="loading-text" id="loadingText">Loading...</div>
     </div>
-    <div class="background-strip"></div> <!-- Added for background strip -->
+
     <script>
-        // JavaScript to toggle container class when the background strip moves over it
-        setInterval(function() {
-            var container = document.querySelector('.container');
-            var rect = container.getBoundingClientRect();
-            var strip = document.querySelector('.background-strip');
-            var stripRect = strip.getBoundingClientRect();
+        var loadingText = document.getElementById("loadingText");
+        var texts = ["Gotcha your resume!!!!", "Getting Personal Information", "Getting Skills", "Getting Work Experience", "Getting Education", "Looking for other information","Generating Matching Position", "Creating Feedback", "Almost done...."];
+        var currentIndex = 0;
+        var intervalId;
 
-            if (stripRect.left >= rect.left && stripRect.right <= rect.right) {
-                container.classList.remove('light');
-                container.classList.add('dark');
-            } else {
-                container.classList.remove('dark');
-                container.classList.add('light');
-            }
+        function changeText() {
+            loadingText.textContent = texts[currentIndex];
+            currentIndex = (currentIndex + 1) % texts.length;
+        }
 
-            // Change text color based on strip color
-            var textColor = strip.style.backgroundColor === 'black' ? '#ffffff' : '#343a40';
-            container.style.color = textColor;
-        }, 5000); // Check every 100 milliseconds
+        function startLoadingPage() {
+            intervalId = setInterval(changeText, 4400); // Change text every 4 seconds
+        }
+
+        function stopLoadingPage() {
+            clearInterval(intervalId);
+        }
+
+        startLoadingPage(); 
     </script>
 </body>
 </html>

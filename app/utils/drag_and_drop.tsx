@@ -12,6 +12,8 @@ export default function DragAndDrop() {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const router = useRouter();
 
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
     const handleDragEnter = (e: any) => {
         e.preventDefault();
         e.stopPropagation();
@@ -66,7 +68,7 @@ export default function DragAndDrop() {
         formData.append('file', file); // 'file' should match the key expected by your Django backend
     
         try {
-          const response = await fetch('${process.env.NEXT_PUBLIC_BACKEND_URL}/api/upload/', { // Update URL to your actual endpoint
+          const response = await fetch(`${backendUrl}/api/upload/`, { // Update URL to your actual endpoint
             method: 'POST',
             body: formData,
             credentials: 'include', // to include cookies (e.g., sessionid)

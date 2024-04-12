@@ -16,8 +16,10 @@ export default function StudentProfile() {
 
     const [profileData, setProfileData] = React.useState(null);
 
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
     React.useEffect(() => {
-        fetch('${process.env.NEXT_PUBLIC_BACKEND_URL}/api/student_profile/', {credentials: 'include'})
+        fetch(`${backendUrl}/api/student_profile/`, {credentials: 'include'})
             .then (response => response.json())
             .then (data => {
                 setProfileData(data);

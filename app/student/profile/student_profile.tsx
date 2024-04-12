@@ -12,8 +12,21 @@ import Image from 'next/image';
 export interface StudentProfileProps {
 }
 
-export default class StudentProfile extends React.Component<StudentProfileProps> {
-  public render() {
+export default function StudentProfile() {
+
+    const [profileData, setProfileData] = React.useState(null);
+
+    React.useEffect(() => {
+        fetch('${process.env.NEXT_PUBLIC_BACKEND_URL}/api/student_profile/', {credentials: 'include'})
+            .then (response => response.json())
+            .then (data => {
+                setProfileData(data);
+            })
+            .catch (error => {
+                console.error('There was an error fetching the profile data:', error);
+            });
+    }, []);
+
     return (
       <div className='flex flex-col h-screen w-screen overflow-x-hidden'>
             <div>
@@ -59,5 +72,4 @@ export default class StudentProfile extends React.Component<StudentProfileProps>
             </div>
         </div>
     );
-  }
 }

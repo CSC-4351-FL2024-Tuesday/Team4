@@ -31,7 +31,7 @@ const StudentLoginPage: React.FC = () => {
     //const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
     const handleLoginClick = async () => {
         try {
-            const response = await fetch('http://localhost:8000/api/signin/', {
+            const response = await fetch('http://35.211.2.38/api/signin/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ const StudentLoginPage: React.FC = () => {
 
     const handleSignupClick = async () => {
         try {
-            const response = await fetch('http://localhost:8000/api/signup/', {
+            const response = await fetch('http://35.211.2.38/api/signup/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

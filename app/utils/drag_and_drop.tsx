@@ -68,7 +68,7 @@ export default function DragAndDrop() {
         formData.append('file', file); // 'file' should match the key expected by your Django backend
     
         try {
-          const response = await fetch('http://localhost:8000/api/upload/', { // Update URL to your actual endpoint
+          const response = await fetch('http://35.211.2.38/api/upload/', { // Update URL to your actual endpoint
             method: 'POST',
             body: formData,
             credentials: 'include', // to include cookies (e.g., sessionid)

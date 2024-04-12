@@ -16,18 +16,18 @@ export default function StudentProfile() {
 
     const [profileData, setProfileData] = React.useState(null);
 
-    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+    //const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-    React.useEffect(() => {
-        fetch(`${backendUrl}/api/student_profile/`, {credentials: 'include'})
-            .then (response => response.json())
-            .then (data => {
-                setProfileData(data);
-            })
-            .catch (error => {
-                console.error('There was an error fetching the profile data:', error);
-            });
-    }, []);
+    // React.useEffect(() => {
+    //     fetch('http://localhost:8000/api/student_profile/', {credentials: 'include'})
+    //         .then (response => response.json())
+    //         .then (data => {
+    //             setProfileData(data);
+    //         })
+    //         .catch (error => {
+    //             console.error('There was an error fetching the profile data:', error);
+    //         });
+    // }, []);
 
     return (
       <div className='flex flex-col h-screen w-screen overflow-x-hidden'>

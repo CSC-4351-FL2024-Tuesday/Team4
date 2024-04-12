@@ -28,10 +28,10 @@ const StudentLoginPage: React.FC = () => {
     const [isMismatched, setIsMismatched] = useState(false);
 
     const router = useRouter();
-    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+    //const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
     const handleLoginClick = async () => {
         try {
-            const response = await fetch(`${backendUrl}/api/signin/`, {
+            const response = await fetch('http://localhost:8000/api/signin/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ const StudentLoginPage: React.FC = () => {
 
     const handleSignupClick = async () => {
         try {
-            const response = await fetch(`${backendUrl}/api/signup/`, {
+            const response = await fetch('http://localhost:8000/api/signup/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

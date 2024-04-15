@@ -21,13 +21,29 @@ from mypy_extensions import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.signIn, name='signIn'),
+    path('', views.info, name='info'),
+    path('firstspage/', views.firstspage, name='firstspage'),
+    path('signin/', views.signin, name='signin'),
+    path('signup/',views.signup,name='signup'),
+    path('Rsignin/', views.Rsignin, name='Rsignin'),
+    path('Rsignup/', views.Rsignup, name='Rsignup'),
+    path('postRsignin/', views.postRsignin, name='/postRsignin/'),
+    path('postRsignup/', views.postRsignup, name='/postRsignup/'),
     path('postsignin/', views.postsignin, name='/postsignin/'),
     path('logout/',views.logout,name='log'),
-    path('signup/',views.signup,name='signup'),
+    path('Rforgotpassword/',views.Rforgotpassword,name='Rforgotpassword'),
     path('forgotpassword/',views.forgotpassword,name='forgotpassword'),
+    path('search/',views.search,name='search/'),
+    path('favStudent/', views.favStudent, name='favStudent'),
+    path('results/',views.results,name='results'),
+    #path('favourite/',views.favourite,name='favourite'),
+    path('add_to_favorites/', views.add_to_favorites, name='add_to_favorites'),
+    path('reupload/',views.reupload,name='reupload'),
     path('postsignup/', views.postsignup, name='/postsignup/'),
     path('uploadfile/', views.uploadfile, name='/uploadfile/'),
-    path('postforgotpassword/', views.postforgotpassword, name='/postforgotpassword/')
+    path('postfilter/', views.postfilter, name='postfilter'),
+    path('postforgotpassword/', views.postforgotpassword, name='/postforgotpassword/'),
+    path('remove_from_favorites/', views.remove_from_favorites, name='remove_from_favorites'),
+    path('postRforgotpassword/', views.postRforgotpassword, name='/postRforgotpassword/')
     #path('microsoft-login/', views.microsoft_login, name='microsoft_login')
 ]

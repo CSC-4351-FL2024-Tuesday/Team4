@@ -21,12 +21,9 @@ def file_ext(file_path,user_id):
    
    def pdf(file_path):
       print("came to pdf method!!!")
-      try:
-         response = urllib.request.urlopen(file_path)
-         pdf_content = response.read()
-      except Exception as e:
-         print("Error:", e)
-         return None
+      response = urllib.request.urlopen(file_path)
+      pdf_content = response.read()
+
 
       with tempfile.NamedTemporaryFile(delete=False) as temp_file:
 
@@ -39,7 +36,6 @@ def file_ext(file_path,user_id):
          page = pdf_reader.pages[0]  
          page_text = page.extract_text()
          text += page_text
-         os.remove(temp_file_path)
       response.close()
       return text
 
@@ -85,8 +81,7 @@ def file_ext(file_path,user_id):
       chat.send_message(file_content)  
       final = ''
 
-      questions=['Give the answer of the following in a single json format: "Personal Info" : Name, Email, Phone Number, and Location."Education"  : University, GPA, Major and Minor. "Skills" : Such as 8 programming skills, 5 technological skills, 5 behavioural skills. "Work Experience": Position, Company, Location, Dates, Small summary of that role. "Extracurricular Activities": Avtivity, Role. All the links present in this text. "Suggestions": Suggest what are the 5 best roles for this candidate in future. "Score" : Based on the candidates major GPA, give score out of 100. "Improvement Suggestions" : List 3 things that this candidate do to improve the resume.']
-
+      questions=['Your task is to extract the required data from the resume: Give the data of the following in a single json format: "Personal_Info" : Name, Email, Phone Number, and Location. "Education"  : University, GPA, Major and Minor. "Skills" : Such as 8 "programming skills", 5 "technological skills", 5 "behavioural skills". "Work_Experience": Position, Company, Location, Dates, Small "Summary" of that role. "Extracurricular_Activities": "Avtivity", "Role". "Links" Just give the https: links links present in this text. "Suggestions": Suggest 5 roles for this candidate. "Score" : Based on the candidates major, GPA, skills, experience give score out of 100. "Improvement_Suggestions" : List 3 things that this candidate do to improve the resume. "Projects": List 3 projects candidate can make to improve their skills.']
       for question in questions:
          response = chat.send_message(question)
          answer = response.text.replace('python', '').replace('```', '').replace('candidate_info = {', '').replace('json', '')
@@ -113,6 +108,60 @@ def file_ext(file_path,user_id):
    print("getting text done")
    return data
 
+def filter_candidate(requirements):
+   model = genai.GenerativeModel('gemini-pro') 
+   genai.configure(api_key=API)
+   chat = model.start_chat()  
+   cred = credentials.Certificate(creds)
+   DB_URL="https://careerswipe-c08a4-default-rtdb.firebaseio.com/"
+   ids=[]
+   users=db.reference("/student")
+   for u in users.get():
+      gp=db.reference(f"/student/{u}/Education/GPA")
+      g=gp.get()
+
+      univ_stu=db.reference(f"/student/{u}/Education/University").get()
+
+      program=[db.reference(f"/student/{u}/Education/Major").get(),db.reference(f"/student/{u}/Education/Minor").get()]
+      # vectorized_sentences = vectorizer.fit_transform([university, univ])
+      # univ_sim=cosine_similarity(vectorized_sentences)[0][1]
+      try:
+         if float(g)>=float(requirements['gpa']) and univ_stu==requirements['university'] and requirements['major'] in program :
+            ids.append(u)
+         else:
+            pass
+      except:
+         pass
+   print(ids)
+   chat = model.start_chat()
+   for x in ids:
+      students=db.reference(f"/student/{x}")
+      all_skills=db.reference(f"/student/{x}/Skills")
+      all_exp=db.reference(f"/student/{x}/Work Experience")                         
+      chat.send_message(f"Here are the skills and experience of student with ID: {x}: Skills: {all_skills.get()} and experience is {all_exp.get()}")
+
+   response=chat.send_message(f"Here are my requirements in a dictionary format, can you return only the top 5-10 student IDS in json format(sorted from best match to least match) in a list format only who best fit my requirements? {requirements}, please do not give any explanation or reasoning. Return only the id")
+   results=response.text.replace("```", "")
+   results=results.replace("json","")
+   try:
+      results= eval(results)
+   except:
+      import re
+      regex = r'\[.*?\]'
+      results = re.findall(regex, results)
+      results= eval(results)
+   
+   filtered_students={}
+   x=0
+   for i in results:
+      data=get_data_rec(i)
+      filtered_students[x]=data
+      x+=1
+   final=[]
+   final.append(filtered_students)
+   final.append(ids)
+   return final
+
 
 #######################################################################################################################################
 
@@ -123,12 +172,16 @@ autho=firebase.auth()
 database=firebase.database()
 storage=firebase.storage()
 
+global user
 
 try:
    cred = credentials.Certificate(creds)
    firebase_admin.initialize_app(cred, {"databaseURL": config['databaseURL']})
 except:
    print("Wrong CREDENTIALS!!!!!!!!!!!!!")
+
+def info(request):
+   return render(request,'info.html')
 
 
 def firstspage(request):
@@ -140,22 +193,11 @@ def signin(request):
 def Rsignin(request):
    return render(request,'Rsignin.html')
 
+def signup(request):
+   return render(request,'signup.html')
+
 def Rsignup(request):
    return render(request,'Rsignup.html')
-
-def postRsignin(request):
-      global user
-      email=request.POST.get('email')
-      password=request.POST.get('password')
-      try:
-         user=autho.sign_in_with_email_and_password(email,password)
-         #print(user['idToken']) 
-         sessionId=user['idToken']
-         request.session=str(sessionId)
-      except:
-         message="Invalid"
-         return render(request,'Rsignin.html',{"message":message})
-      return render(request,"Rwelcome.html",{'e':email})
 
 def postsignin(request):
       global user
@@ -169,20 +211,39 @@ def postsignin(request):
       except:
          message="Invalid"
          return render(request,'signin.html',{"message":message})
-      return render(request,"welcome.html",{'e':email})
+      data_file=get_data(user['localId'])
+      return render(request,'uploadsuccess.html',{'file':data_file})
+
+def get_data(id):
+   filtered_students={}
+   ref = db.reference(f'/student/{id}')
+   data=ref.get()
+   filtered_students[0]=data
+   return filtered_students
+
+def get_data_rec(id):
+   ref = db.reference(f'/student/{id}')
+   data=ref.get()
+   return data
+
+
+def postRsignin(request):
+      global user
+      email=request.POST.get('email')
+      password=request.POST.get('password')
+      try:
+         user=autho.sign_in_with_email_and_password(email,password)
+         sessionId=user['idToken']
+         request.session=str(sessionId)
+      except:
+         message="Invalid"
+         return render(request,'Rsignin.html',{"message":message})
+      return render(request,"search.html",{'e':email})
 
 
 def logout(request):
    auth.logout(request)
    return render(request,('signin.html'))
-
-    
-def signup(request):
-   return render(request,'signup.html')
-
-def loading(request):
-   return render(request,('loading.html'))
-
 
 def postsignup(request):
    name=request.POST.get('name')
@@ -193,7 +254,7 @@ def postsignup(request):
       message="Password didnt match"
       return render(request,'signup.html',{"message":message})
    try:
-      if email.endswith('.edu'):
+      if email.endswith('.edu') and 'student' in email:
          user=autho.create_user_with_email_and_password(email,password)
          autho.send_email_verification(user['idToken'])
       else:
@@ -202,11 +263,14 @@ def postsignup(request):
    except:
       message="Unable to Login Try again"
       return render(request,'signup.html',{"message":message})
-   user_id=user['localId']
-   data={'name':name,'status':'1'}
-   database.child('student').child(user_id).child('details').set(data)
-   message='Check the link, sent to the email entered above, so we can confirm your email address'
-   return render(request,'signin.html',{"message":message})
+   try:
+      user=autho.sign_in_with_email_and_password(email,password)
+      sessionId=user['idToken']
+      request.session=str(sessionId)
+   except:
+      message="Invalid"
+      return render(request,'signup.html',{"message":message})
+   return render(request,"welcome.html",{'e':email})
 
 
 def postRsignup(request):
@@ -216,25 +280,23 @@ def postRsignup(request):
    confirmpassword=request.POST.get('confirmpassword')
    if confirmpassword!=password:
       message="Password didnt match"
-      return render(request,'signup.html',{"message":message})
+      return render(request,'Rsignup.html',{"message":message})
    try:
-      if email.endswith('.edu'):
+      if email.endswith('.edu') and 'student' not in email:
          user=autho.create_user_with_email_and_password(email,password)
          autho.send_email_verification(user['idToken'])
       else:
          message="Use only Student Email Address"
-         return render(request,'signup.html',{"message":message})
+         return render(request,'Rsignup.html',{"message":message})
    except:
       message="Unable to Login Try again"
-      return render(request,'signup.html',{"message":message})
+      return render(request,'Rsignup.html',{"message":message})
    user_id=user['localId']
    data={'name':name,'status':'1'}
-   database.child('student').child(user_id).child('details').set(data)
+   database.child('recruiter').child(user_id).child('details').set(data)
    message='Check the link, sent to the email entered above, so we can confirm your email address'
-   return render(request,'signin.html',{"message":message})
+   return render(request,'Rsignin.html',{"message":message})
 
-def loading(request):
-   return render(request,'loading.html')
 
 def uploadfile(request):
    user=autho.current_user
@@ -244,7 +306,6 @@ def uploadfile(request):
       my_resume=request.FILES['file']
       my_resume_name=my_resume.name
       my_resume_name=user_id+my_resume_name
-      print("resume type is : ",type(my_resume))
       storage.child(my_resume_name).put(my_resume)
       try:
          download_url = storage.child(my_resume_name).get_url(None)
@@ -255,15 +316,28 @@ def uploadfile(request):
       #web_path=(r'https://firebasestorage.googleapis.com/v0/b/careerswipe-c08a4.appspot.com/o/'+my_resume_name)
       data_file=file_ext(download_url,user_id)
       ref = db.reference(f'/student/{user_id}')
-      ref.set(final_json)
+      ref.set(data_file)
+      ref.child(str('Resume')).set(download_url)
+      data_file=get_data(user_id)
       return render(request,'uploadsuccess.html',{'file':data_file})
    else:
       form=UploadFileForm()
       message='form not valid'
       return render(request,'welcome.html',{'form':form, 'message':message})
 
+def reupload(request):
+   global user
+   user=autho.current_user
+   sessionId=user['idToken']
+   request.session=str(sessionId)
+   return render(request,"welcome.html",{'e':'PLease Upload the resume again'})
+   
+
 def forgotpassword(request):
    return render(request,'forgotpassword.html')
+
+def Rforgotpassword(request):
+   return render(request,'Rforgotpassword.html')
 
 def postforgotpassword(request):
 
@@ -271,3 +345,124 @@ def postforgotpassword(request):
    autho.send_password_reset_email(email)
 
    return render(request,'signin.html')
+
+def postRforgotpassword(request):
+
+   email=request.POST.get('email')
+   autho.send_password_reset_email(email)
+
+   return render(request,'Rsignin.html')
+
+
+def results(request):
+   return render(request,'results.html')
+
+
+# def favourite(request):
+#    return render(request,'favourite.html')
+
+def search(request):
+   return render(request,'search.html')
+
+
+def postfilter(request):
+   if request.method == 'POST':
+        skills = request.POST.getlist('skills[]') 
+        gpa = request.POST.get('GPA')
+        university = request.POST.get('uni')
+        major = request.POST.get('major')
+        experience = request.POST.get('exp')
+        role=request.POST.get('role')
+   
+   filters={'role':role, 'skills':skills, 'gpa':gpa, 'university':university, 'major': major, 'experience':experience}
+
+   data_file=filter_candidate(filters)
+   print(data_file[0])
+   return render(request,'results.html',{'file':data_file[0], 'ids':data_file[1]})
+
+
+@require_POST
+def add_to_favorites(request):
+   global user
+   user = autho.current_user
+   sessionId = user['idToken']
+   request.session['idToken'] = str(sessionId)
+   recruiter_id = user['localId']
+   
+   ref = db.reference(f'/recruiter/{recruiter_id}/students')
+   
+   student_id = request.POST.get('userId')
+   print("Received student ID:", student_id)
+   existing_students = ref.get() or {}
+   print(existing_students)
+   if student_id in existing_students:
+      return JsonResponse({'status': 'Duplicate: Student already added'})
+   next_index = len(existing_students)
+   ref.child(str(next_index)).set(student_id)
+   return JsonResponse({'status': 'Added', 'index': next_index})
+
+def favStudent(request):
+   global user
+   user = autho.current_user
+   sessionId = user['idToken']
+   request.session['idToken'] = str(sessionId)
+   recruiter_id = user['localId']
+   ref = db.reference(f'/recruiter/{recruiter_id}/students')
+   existing_students = ref.get()
+   filtered_students={}
+   x=0
+   res = []
+   for val in existing_students:
+      if val != None :
+         res.append(val)
+   print('hu',res)
+   existing_students=res
+   for i in existing_students:
+      if i is not None:
+         data=get_data_rec(i)
+         filtered_students[x]=data
+         x+=1
+   data_file=[]
+   data_file.append(filtered_students)
+   return render(request,'favourite.html',{'file':data_file[0],'ids':existing_students})
+   
+   
+@require_POST
+def remove_from_favorites(request):
+   global user
+   user = autho.current_user
+   sessionId = user['idToken']
+   request.session['idToken'] = str(sessionId)
+   recruiter_id = user['localId']
+   ref = db.reference(f'/recruiter/{recruiter_id}/students')
+   existing_students = ref.get() or {}
+   
+   student_id = request.POST.get('userId')
+   key_to_remove = None
+   for i in range (len(existing_students)):
+      if existing_students[i] == student_id:
+         key_to_remove = str(i)
+         break
+   print(key_to_remove)
+   if key_to_remove is None:
+      return JsonResponse({'status': 'Not Found: Student ID not in favorites'}, status=404)
+
+   ref.child(key_to_remove).delete()
+   
+   while i in range(len(existing_students)):
+      if existing_students[i]==student_id:
+         key_to_remove=i
+         break
+   for i in existing_students:
+      if i==None:
+         existing_students.remove(i)
+   ref.child(str(i)).delete()   
+   existing_students = ref.get()
+   next_index = 0
+   print(existing_students)
+   while i in existing_students:
+      ref.child(str(next_index)).set(student_id)
+      next_index+=1
+   
+
+   return JsonResponse({'status': 'Removed', 'studentId': student_id})

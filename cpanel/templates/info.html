@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerSwipe - Revolutionizing Recruitment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .header {
+            color: #ffffff;
+            padding: 50px 0;
+            text-align: center;
+            background: linear-gradient(120deg, #c4bfbf 0%, #101010 100%);
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        .header p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        .section {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            transition: transform 0.3s ease-out;
+        }
+        .section:hover {
+            transform: translateY(-5px);
+        }
+        .section h2 {
+            font-size: 24px;
+            color: #101010;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .section p, .section ol {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .button-container {
+            text-align: center;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .btn {
+            background-color: #ffffff;
+            color: #101010;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
+            font-size: 16px;
+            text-decoration: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .btn:hover {
+            background-color: #333;
+            color: #ffffff;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #101010;
+            color: #ffffff;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    
+    <header class="header">
+        <h1>CareerSwipe</h1>
+        <p>Revolutionizing the way employers connect with potential talent through advanced AI technology.</p>
+    </header>
+
+    <div class="section">
+        <h2>What is the service?</h2>
+        <p>At CareerSwipe, we harness the power of artificial intelligence to transform the recruitment process. Our cutting-edge platform seamlessly extracts and analyzes details from resumes, offering a streamlined match-making experience that prioritizes precision and efficiency. Ideal for both students and recruiters, our service ensures that every connection is a step towards a successful future.</p>
+    </div>
+
+    <div class="section">
+        <h2>Why should I use it?</h2>
+        <p>In the fast-paced world we live in, time is a precious commodity. Our platform stands out by offering:</p>
+        <ol>
+            <li><strong>Speed:</strong> Say goodbye to lengthy screening processes. Our AI quickly identifies the most qualified candidates.</li>
+            <li><strong>Accuracy:</strong> Advanced machine learning tools ensure matches are based on precise criteria, from GPA to specific skill sets.</li>
+            <li><strong>Opportunity:</strong> For students, we provide a gateway to being discovered based on your true potential. For employers, access a pool of candidates ready to excel in their roles.</li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2>How can it help me?</h2>
+        <p>Our platform is designed to streamline the recruitment process for both students and employers.</p>
+        <ol>
+            <li><strong>For Students:</strong> Sign up, upload your resume, and answer a few questions. Our AI will make your profile visible to top recruiters based on your qualifications and preferences.</li>
+            <li><strong>For Employers:</strong> Define your ideal candidate criteria using our intuitive filters. Whether you seek specific skills, experiences, or academic achievements, we have you covered.</li>
+            <li><strong>Connect:</strong> Our system curates a list of candidates that perfectly match your criteria. Review their detailed profiles and connect with your future team members with just a click.</li>
+        </ol>
+    </div>
+
+    <div class="button-container">
+        <a href="{% url 'firstspage' %}" class="btn">Get Started</a>
+    </div>
+    
+    <footer>
+        &copy; 2024 CareerSwipe. All rights reserved.
+    </footer>
+</body>
+</html>

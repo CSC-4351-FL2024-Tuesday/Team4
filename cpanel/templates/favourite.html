@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>User Profiles</title>
+<title>Favourite Profiles</title>
 <style>
     body { 
         font-family: 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif';
@@ -103,7 +103,7 @@
 </head>
 <body>
 <div id="userList"></div>
-<div id="details"><p>Select a user to see details.</p></div>
+<div id="details"><p>Select your favourite user to see their details.</p></div>
 
 
 <script>
@@ -111,6 +111,7 @@ var currentUserId = '{{ request.user.id }}';
 var userData = {{file|safe}};
 var ids = {{ids|safe}};
 var usersData = Object.values(userData);
+
 
 document.addEventListener('DOMContentLoaded', function () {
     const userList = document.getElementById('userList');
@@ -129,8 +130,9 @@ document.addEventListener('DOMContentLoaded', function () {
             button.innerHTML = buttonText;
             button.onclick = () => showDetails(index);
 
+            // Create a form for favorite action
             const favoriteForm = document.createElement('form');
-            favoriteForm.action = '/add_to_favorites/';
+            favoriteForm.action = '/remove_from_favorites/';
             favoriteForm.method = 'POST';
 
             // CSRF Token needed for Django forms
@@ -150,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Submit button for the form
             const favoriteButton = document.createElement('button');
             favoriteButton.type = 'submit';
-            favoriteButton.innerHTML = 'Favorite';
+            favoriteButton.innerHTML = 'UnFavorite';
             favoriteButton.className = 'favorite';
             favoriteForm.appendChild(favoriteButton);
 
@@ -163,7 +165,6 @@ document.addEventListener('DOMContentLoaded', function () {
             actionButtons.className = 'action-buttons';
             actionButtons.appendChild(favoriteForm);
             actionButtons.appendChild(messageButton);
-            
 
             userContainer.appendChild(button);
             userContainer.appendChild(actionButtons);
@@ -171,6 +172,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Utility function to get cookie by name
     function getCookie(name) {
         let cookieValue = null;
         if (document.cookie && document.cookie !== '') {
@@ -229,9 +231,6 @@ document.addEventListener('DOMContentLoaded', function () {
             } 
             else if (key === "Score") {
                 output += `<p><strong>Career Swipe Score:</strong> ${user[key]}</p>`;
-            } 
-            else if (key === "Resume") {
-                output += `<p><strong>Resume Link:</strong> <a href="${user[key]}" target="_blank">${user[key]}</a></p>`;
             } 
             else if (key === "Work_Experience") {
                 user[key].forEach(function(experience) {

@@ -86,39 +86,7 @@
         #email::placeholder {
             text-align: center; /* Align the placeholder text */
         }
-        /* Added for background strip */
-        .background-strip {
-            position: absolute;
-            top: 0;
-            left: -33.33%; /* Initially off-screen to the left */
-            width: 133.33%; /* Extend beyond the screen width for animation */
-            height: 100%;
-            z-index: -1;
-            background-color: black;
-            animation: moveBackground 12s ease-in-out infinite; /* Adjust timing as needed */
-        }
-
-        @keyframes moveBackground {
-            0% {
-                transform: translateX(-100%); /* Start position (off-screen to the left) */
-            }
-            50% {
-                transform: translateX(100%); /* Midway, move to the right */
-            }
-            100% {
-                transform: translateX(-100%); /* End position (off-screen to the left) */
-            }
-        }
-
-        /* Text color animation */
-        @keyframes changeTextColor {
-            0%, 100% {
-                color: #343a40; /* Dark text color */
-            }
-            50% {
-                color: #ffffff; /* Light text color */
-            }
-        }
+        
     </style>
 </head>
 <body>
@@ -161,27 +129,6 @@
             </div>
         </form>
     </div>
-    <div class="background-strip"></div> <!-- Added for background strip -->
-    <script>
-        // JavaScript to toggle container class when the background strip moves over it
-        setInterval(function() {
-            var container = document.querySelector('.container');
-            var rect = container.getBoundingClientRect();
-            var strip = document.querySelector('.background-strip');
-            var stripRect = strip.getBoundingClientRect();
-
-            if (stripRect.left >= rect.left && stripRect.right <= rect.right) {
-                container.classList.remove('light');
-                container.classList.add('dark');
-            } else {
-                container.classList.remove('dark');
-                container.classList.add('light');
-            }
-
-            // Change text color based on strip color
-            var textColor = strip.style.backgroundColor === 'black' ? '#ffffff' : '#343a40';
-            container.style.color = textColor;
-        }, 5000); // Check every 100 milliseconds
-    </script>
+    
 </body>
 </html>

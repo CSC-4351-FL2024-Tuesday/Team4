@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profiles</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome for icons -->
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', sans-serif;
+            margin: 0;
+            background-color: #f8f9fa; /* Light gray background */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px;
+        }
+
+        #userList {
+            flex: 1;
+            max-width: 300px;
+            margin-right: 20px;
+            background: #fff; /* White background */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        #details {
+            flex: 2;
+            background: #f0f0f0; /* Light gray background */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        button, .favorite, .message {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            background-color: transparent; /* Transparent background */
+            color: #007bff; /* Blue text */
+            border: none; /* No border */
+            cursor: pointer;
+            text-align: center;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box-shadow for depth */
+        }
+
+        button:hover, .favorite:hover, .message:hover {
+            background-color: #f0f0f0; /* Light gray background on hover */
+        }
+
+        .userInfo {
+            padding: 5px;
+            margin-bottom: 20px; /* Add margin to each user info section */
+        }
+
+        .userField {
+            margin-bottom: 5px;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #555; /* Dark gray label */
+            display: inline-block;
+            width: 100px;
+        }
+
+        .value {
+            color: #333; /* Darker gray value */
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .favorite, .message {
+            flex: 1;
+            text-align: center;
+        }
+
+        .favorite {
+            margin-right: 5px; /* Add margin to the right of Favorite button */
+        }
+
+        .details-heading {
+            color: #007bff; /* Blue heading */
+            margin-bottom: 10px;
+        }
+
+        .details-content {
+            margin-bottom: 20px;
+        }
+        #logout-btn {
+            position: fixed;
+            top: 20px;
+            left: 0px;
+            background-color: #007bff;
+            color: #fff;
+            width: 70px;
+            text-align: left;
+            height: 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #logout-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <button id="logout-btn" onclick="location.href='{% url 'log' %}'">Logout</button>
+<div class="container">
+    <div id="userList"></div>
+    <div id="details">
+        <h1 class="details-heading">Select a user to see details.</h1>
+        <div class="details-content"></div>
+    </div>
+</div>
+
+
+<script>
+var currentUserId = '{{ request.user.id }}';
+var userData = {{file|safe}};
+var ids = {{ids|safe}};
+var usersData = Object.values(userData);
+
+document.addEventListener('DOMContentLoaded', function () {
+    const userList = document.getElementById('userList');
+    const details = document.getElementById('details');
+    function addToFavorites(userId) {
+        fetch('/add_to_favorites/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            body: JSON.stringify({ userId: userId })
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Failed to add user to favorites.');
+            }
+        })
+        .then(data => {
+            alert('User has been added to favorites.'); // Show pop-up message
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Failed to add user to favorites. Please try again later.');
+        });
+    }
+    function renderUserList() {
+        usersData.forEach((user, index) => {
+            const userContainer = document.createElement('div');
+            const button = document.createElement('button');
+            let buttonText = '<div class="userInfo">';
+            buttonText += `<div class="userField"><span class="label">Name:</span> <span class="value">${user.Personal_Info.Name}</span></div>`;
+            buttonText += `<div class="userField"><span class="label">Location:</span> <span class="value">${user.Personal_Info.Location}</span></div>`;
+            buttonText += `<div class="userField"><span class="label">Phone Number:</span> <span class="value">${user.Personal_Info['Phone Number']}</span></div>`;
+            buttonText += `<div class="userField"><span class="label">Email:</span> <span class="value">${user.Personal_Info.Email}</span></div>`;
+            buttonText += '</div>';
+            button.innerHTML = buttonText;
+            button.onclick = () => showDetails(index);
+
+            //const favoriteForm = document.createElement('form');
+            //favoriteForm.action = '/add_to_favorites/';
+            //favoriteForm.method = 'POST';
+
+            const favoriteForm = document.createElement('form');
+            favoriteForm.action = '/add_to_favorites/';
+            favoriteForm.method = 'POST';
+
+            // Add an event listener to the form submission
+            favoriteForm.addEventListener('submit', async (event) => {
+                event.preventDefault(); // Prevent default form submission behavior
+
+                // Submit the form using Fetch API
+                try {
+                    const response = await fetch(favoriteForm.action, {
+                        method: favoriteForm.method,
+                        body: new FormData(favoriteForm)
+                    });
+                    const responseData = await response.json();
+
+                    if (response.ok) {
+                        // If the request was successful, show a dialog box
+                        alert('Favorite has been added!');
+                    } else {
+                        // If there was an error, log the error message
+                        console.error('Error:', responseData.error);
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            });
+
+            // CSRF Token needed for Django forms
+            const csrfInput = document.createElement('input');
+            csrfInput.type = 'hidden';
+            csrfInput.name = 'csrfmiddlewaretoken';
+            csrfInput.value = getCookie('csrftoken'); // get CSRF Token from cookies
+            favoriteForm.appendChild(csrfInput);
+
+            // Hidden input to carry the user ID
+            const userIdInput = document.createElement('input');
+            userIdInput.type = 'hidden';
+            userIdInput.name = 'userId';
+            userIdInput.value = ids[index];
+            favoriteForm.appendChild(userIdInput);
+
+            // Submit button for the form
+            const favoriteButton = document.createElement('button');
+            favoriteButton.type = 'submit';
+            favoriteButton.innerHTML = 'Favorite';
+            favoriteButton.className = 'favorite';
+            favoriteForm.appendChild(favoriteButton);
+
+            const messageButton = document.createElement('button');
+            messageButton.innerHTML = 'Message';
+            messageButton.className = 'message';
+            messageButton.onclick = () => alert('Messaging not implemented yet.');
+
+            const actionButtons = document.createElement('div');
+            actionButtons.className = 'action-buttons';
+            actionButtons.appendChild(favoriteForm);
+            actionButtons.appendChild(messageButton);
+            
+
+            userContainer.appendChild(button);
+            userContainer.appendChild(actionButtons);
+            userList.appendChild(userContainer);
+        });
+    }
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    function showDetails(index) {
+        const user = usersData[index];
+        let output = `<h1>${user.Personal_Info.Name}</h1>`;
+
+        for (const key in user) {
+            if (key === "Personal_Info" || key === "Improvement_Suggestions" || key === "Suggestions" || key === "Projects")
+            {
+                continue
+            }
+            output += `<h2>${key.replace(/_/g, ' ')}</h2>`;
+            
+            if (key === "Education") {
+                output += "<ul>";
+                for (var subKey in user[key]) {
+                    output += `<li><h3>${subKey}:</h3> ${user[key][subKey]}</li>`;
+                }
+                output += "</ul>";
+            } 
+            else if (key === "Extracurricular_Activities") {
+                output += "<ul>";
+                user[key].forEach(function(activity) {
+                    output += `<li><strong>Activity:</strong> ${activity["Activity"]} <strong>Role:</strong> ${activity["Role"]}</li>`;
+                });
+                output += "</ul>";
+            }  
+            else if (key === "Links") {
+                output += "<ul>";
+                user[key].forEach(function(link) {
+                    output += `<li><a href='${link}' target='_blank'>${link}</a></li>`;
+                });
+                output += "</ul>";
+            } 
+            else if (key === "Skills") {
+                for (var subKey in user[key]) {
+                    output += `<h3>${subKey}:</h3><ul>`;
+                    user[key][subKey].forEach(function(skill) {
+                        output += `<li>${skill}</li>`;
+                    });
+                    output += "</ul>";
+                }
+            } 
+            else if (key === "Score") {
+                output += `<p><strong>Career Swipe Score:</strong> ${user[key]}</p>`;
+            } 
+            else if (key === "Resume") {
+                output += `<p><strong>Resume Link:</strong> <a href="${user[key]}" target="_blank">${user[key]}</a></p>`;
+            } 
+            else if (key === "Work_Experience") {
+                user[key].forEach(function(experience) {
+                    output += `<h3>${experience["Position"]}</h3>`;
+                    output += `<p><strong>Company:</strong> ${experience["Company"]}</p>`;
+                    output += `<p><strong>Location:</strong> ${experience["Location"]}</p>`;
+                    output += `<p><strong>Dates:</strong> ${experience["Dates"]}</p>`;
+                    output += `<p><strong>Summary:</strong> ${experience["Summary"]}</p>`;
+                });
+            }
+        }
+        details.innerHTML = output;
+    }
+
+    renderUserList();
+});
+</script>
+</body>
+</html>

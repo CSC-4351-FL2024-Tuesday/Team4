@@ -6,6 +6,24 @@
     <title>Filter</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* Custom scrollbar styles */
+        .container::-webkit-scrollbar {
+            width: 10px; /* Width of the scrollbar */
+        }
+        
+        .container::-webkit-scrollbar-track {
+            background: #f1f1f1; /* Color of the scrollbar track */
+        }
+        
+        .container::-webkit-scrollbar-thumb {
+            background: #888; /* Color of the scrollbar thumb */
+            border-radius: 5px; /* Rounded corners */
+        }
+        
+        .container::-webkit-scrollbar-thumb:hover {
+            background: #555; /* Darker color on hover */
+        }
+        
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
@@ -17,105 +35,120 @@
             height: 100vh;
             overflow: auto;
             position: relative;
+            scroll-behavior: smooth;
         }
-
+        
         .container {
-            width: 95%;
-            max-width: 100%; /* Ensure it does not exceed the viewport width */
+            width: 90%;
+            max-width: 600px; /* Set a maximum width for better readability */
             margin: 20px;
             padding: 20px;
-            background-color: #ffffff;
+            background-color: #fff;
             border-radius: 12px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             text-align: center;
-            overflow-y: auto; /* Allows scrolling within the container */
-            max-height: 90vh; /* Limits the maximum height */
+            overflow-y: auto; /* Allow scrolling within the container */
+            max-height: 90vh; /* Limit the maximum height */
         }
         
         .fav-btn {
             position: fixed;
-            top: 30px;
-            right: 60px;
-            background-color: black; 
-            color: #ffffff;
-            width: 70px; 
-            height: 30px; 
+            top: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: #fff;
+            width: 100px;
+            height: 40px;
             border: none;
-            padding: 0;
+            border-radius: 8px;
+            font-size: 1rem;
             cursor: pointer;
-            font-size: 5; 
+            transition: background-color 0.3s;
         }
-          
-
-
+        
+        .fav-btn:hover {
+            background-color: #0056b3;
+        }
+        
         h1, h2 {
-            font-size: 1.5rem; /* Responsive font size */
+            font-size: 1.5rem;
+            color: #333; /* Darken the text color for better contrast */
+            margin-bottom: 20px; /* Add some spacing below headings */
         }
-
+        
         .description {
             font-size: 1rem;
             color: #666;
+            margin-bottom: 20px; /* Add some spacing below descriptions */
         }
-
+        
         .form-group {
             text-align: left;
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px; /* Add consistent spacing between form groups */
         }
-
+        
         label {
             display: block;
             font-weight: 700;
-            margin-bottom: .5rem;
+            margin-bottom: 10px; /* Adjust margin for better spacing */
+            color: #333; /* Darken the text color for better contrast */
         }
-
+        
         input[type="text"], input[type="number"], select {
-            width: 100%;
+            width: calc(100% - 22px); /* Adjust input width to accommodate padding and border */
             padding: 10px;
             border: 1px solid #ced4da;
             border-radius: 5px;
-            font-size: 1rem; /* Responsive font size */
+            font-size: 1rem;
+            margin-top: 5px; /* Adjust margin for better spacing */
         }
-
+        
         button {
             width: 100%;
-            background-color: #343a40; /* Dark background for visibility */
-            color: #ffffff;
+            background-color: #007bff;
+            color: #fff;
             border: none;
             padding: 12px;
             border-radius: 6px;
             cursor: pointer;
-            font-size: 1rem; /* Responsive font size */
+            font-size: 1rem;
             transition: background-color 0.3s;
         }
-
+        
         button:hover {
-            background-color: #1d2124;
+            background-color: #0056b3;
         }
-
+        
         @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+        
             h1, h2 {
                 font-size: 1.2rem;
             }
-
+        
             .description, input, button, select {
                 font-size: 0.9rem;
             }
         }
-
+        
         @media (max-width: 480px) {
             .container {
-                margin: 10px;
+                margin: 5px;
                 padding: 10px;
             }
-
+        
             h1, h2 {
                 font-size: 1rem;
             }
-
+        
             .description, input, button, select {
                 font-size: 0.8rem;
             }
         }
+        
     </style>
 </head>
 <body>
@@ -193,7 +226,7 @@
                 <h2>Experience</h2>
                 <p class="description">Indicate minimum months of relevant experience.</p>
                 <div class="form-group">
-                    <input type="number" id="exp" name="exp" placeholder="Experience in months" required>
+                    <input type="number" id="exp" name="exp" placeholder="Experience in months" min="1" required>
                 </div>
             </section>
             <button type="submit">Apply Filters</button>

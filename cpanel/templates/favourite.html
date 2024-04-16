@@ -10,47 +10,55 @@
         margin: 0;
         display: flex;
         height: 100vh;
-        background-color: #333;
+        background-color: #f8f9fa; /* Light gray background */
     }
     #userList { 
-        width: 300px;
-        background: #222;
-        color: #fff;
+        min-width: 300px; /* Maintain minimum width */
+        width: 30%; /* Set width to a percentage */
+        background: #fff; /* White background */
+        color: #333; /* Dark text color */
         overflow-y: auto;
         box-shadow: 2px 0 10px rgba(0,0,0,0.3);
         padding: 20px;
+        border-radius: 8px; /* Rounded corners */
+        transition: width 0.3s; /* Smooth transition */
     }
     #details { 
         flex-grow: 1;
         padding: 20px;
-        background: #444;
-        color: #fff;
+        background: #f0f0f0; /* Light gray background */
+        color: #333; /* Dark text color */
         overflow-y: auto;
+        border-radius: 8px; /* Rounded corners */
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
     }
     button, .favorite, .message {
         display: block;
         width: 100%;
         padding: 12px;
         margin-bottom: 10px;
-        background-color: #555;
-        color: white;
-        border: none;
+        background-color: transparent; /* Transparent background */
+        color: #007bff; /* Blue text */
+        border: none; /* No border */
         cursor: pointer;
         text-align: left;
-        border-radius: 4px;
+        border-radius: 8px; /* Rounded corners */
+        transition: background-color 0.3s; /* Smooth transition on hover */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box-shadow for depth */
     }
     button:hover, .favorite:hover, .message:hover {
-        background-color: #666;
+        background-color: #f0f0f0; /* Light gray background on hover */
     }
     h1, h2, h3 {
-        color: #ddd;
+        color: #444; /* Dark heading color */
     }
     h1 {
         margin-bottom: 20px;
+        font-size: 28px; /* Larger font size for main headings */
     }
     h2 {
         font-size: 20px;
-        border-bottom: 1px solid #777;
+        border-bottom: 1px solid #ddd; /* Lighter border color for subheadings */
         padding-bottom: 5px;
         margin-top: 20px;
     }
@@ -87,7 +95,7 @@
         width: 100px; 
     }
     .value {
-        color: #ddd;
+        color: #333; /* Dark text color for user details */
     }
     .action-buttons {
         display: flex;
@@ -96,14 +104,16 @@
     }
     .favorite, .message {
         flex: 1;
-        margin-left: 5px;
         text-align: center;
+    }
+    .favorite {
+        margin-right: 5px; /* Add margin to the right of Favorite button */
     }
 </style>
 </head>
 <body>
 <div id="userList"></div>
-<div id="details"><p>Select your favourite user to see their details.</p></div>
+<div id="details"><p>Select your favorite user to see their details.</p></div>
 
 
 <script>
@@ -128,12 +138,36 @@ document.addEventListener('DOMContentLoaded', function () {
             buttonText += `<div class="userField"><span class="label">Email:</span> <span class="value">${user.Personal_Info.Email}</span></div>`;
             buttonText += '</div>';
             button.innerHTML = buttonText;
-            button.onclick = () => showDetails(index);
+            button.onclick = () => showDetails(user);
 
             // Create a form for favorite action
             const favoriteForm = document.createElement('form');
             favoriteForm.action = '/remove_from_favorites/';
             favoriteForm.method = 'POST';
+
+            // Add an event listener to the form submission
+            favoriteForm.addEventListener('submit', async (event) => {
+                event.preventDefault(); // Prevent default form submission behavior
+
+                // Submit the form using Fetch API
+                try {
+                    const response = await fetch(favoriteForm.action, {
+                        method: favoriteForm.method,
+                        body: new FormData(favoriteForm)
+                    });
+                    const responseData = await response.json();
+
+                    if (response.ok) {
+                        // If the request was successful, show a dialog box
+                        alert('Favorite has been Removed! Refresh the page for changes');
+                    } else {
+                        // If there was an error, log the error message
+                        console.error('Error:', responseData.error);
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            });
 
             // CSRF Token needed for Django forms
             const csrfInput = document.createElement('input');
@@ -152,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Submit button for the form
             const favoriteButton = document.createElement('button');
             favoriteButton.type = 'submit';
-            favoriteButton.innerHTML = 'UnFavorite';
+            favoriteButton.innerHTML = 'Unfavorite';
             favoriteButton.className = 'favorite';
             favoriteForm.appendChild(favoriteButton);
 
@@ -188,51 +222,42 @@ document.addEventListener('DOMContentLoaded', function () {
         return cookieValue;
     }
 
-    function showDetails(index) {
-        const user = usersData[index];
+    function showDetails(user) {
         let output = `<h1>${user.Personal_Info.Name}</h1>`;
-
         for (const key in user) {
-            if (key === "Personal_Info" || key === "Improvement_Suggestions" || key === "Suggestions" || key === "Projects")
-            {
-                continue
+            if (key === "Personal_Info" || key === "Improvement_Suggestions" || key === "Suggestions" || key === "Projects") {
+                continue;
             }
             output += `<h2>${key.replace(/_/g, ' ')}</h2>`;
-            
             if (key === "Education") {
                 output += "<ul>";
-                for (var subKey in user[key]) {
+                for (const subKey in user[key]) {
                     output += `<li><h3>${subKey}:</h3> ${user[key][subKey]}</li>`;
                 }
                 output += "</ul>";
-            } 
-            else if (key === "Extracurricular_Activities") {
+            } else if (key === "Extracurricular_Activities") {
                 output += "<ul>";
                 user[key].forEach(function(activity) {
                     output += `<li><strong>Activity:</strong> ${activity["Activity"]} <strong>Role:</strong> ${activity["Role"]}</li>`;
                 });
                 output += "</ul>";
-            }  
-            else if (key === "Links") {
+            } else if (key === "Links") {
                 output += "<ul>";
                 user[key].forEach(function(link) {
                     output += `<li><a href='${link}' target='_blank'>${link}</a></li>`;
                 });
                 output += "</ul>";
-            } 
-            else if (key === "Skills") {
-                for (var subKey in user[key]) {
+            } else if (key === "Skills") {
+                for (const subKey in user[key]) {
                     output += `<h3>${subKey}:</h3><ul>`;
                     user[key][subKey].forEach(function(skill) {
                         output += `<li>${skill}</li>`;
                     });
                     output += "</ul>";
                 }
-            } 
-            else if (key === "Score") {
+            } else if (key === "Score") {
                 output += `<p><strong>Career Swipe Score:</strong> ${user[key]}</p>`;
-            } 
-            else if (key === "Work_Experience") {
+            } else if (key === "Work_Experience") {
                 user[key].forEach(function(experience) {
                     output += `<h3>${experience["Position"]}</h3>`;
                     output += `<p><strong>Company:</strong> ${experience["Company"]}</p>`;
@@ -242,6 +267,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }
         }
+        // Append details to the details container
         details.innerHTML = output;
     }
 

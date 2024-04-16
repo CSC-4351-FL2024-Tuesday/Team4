@@ -1,109 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>User Profiles</title>
-<style>
-    body { 
-        font-family: 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif';
-        margin: 0;
-        display: flex;
-        height: 100vh;
-        background-color: #333;
-    }
-    #userList { 
-        width: 300px;
-        background: #222;
-        color: #fff;
-        overflow-y: auto;
-        box-shadow: 2px 0 10px rgba(0,0,0,0.3);
-        padding: 20px;
-    }
-    #details { 
-        flex-grow: 1;
-        padding: 20px;
-        background: #444;
-        color: #fff;
-        overflow-y: auto;
-    }
-    button, .favorite, .message {
-        display: block;
-        width: 100%;
-        padding: 12px;
-        margin-bottom: 10px;
-        background-color: #555;
-        color: white;
-        border: none;
-        cursor: pointer;
-        text-align: left;
-        border-radius: 4px;
-    }
-    button:hover, .favorite:hover, .message:hover {
-        background-color: #666;
-    }
-    h1, h2, h3 {
-        color: #ddd;
-    }
-    h1 {
-        margin-bottom: 20px;
-    }
-    h2 {
-        font-size: 20px;
-        border-bottom: 1px solid #777;
-        padding-bottom: 5px;
-        margin-top: 20px;
-    }
-    ul, p, li {
-        padding: 0;
-        margin: 0;
-    }
-    ul {
-        padding-left: 20px;
-        list-style-type: none;
-    }
-    li {
-        line-height: 1.6;
-        margin-bottom: 5px;
-    }
-    a {
-        color: #4a9eda;
-        text-decoration: none;
-    }
-    a:hover {
-        text-decoration: underline;
-    }
-    .userInfo {
-        text-align: left; 
-        padding: 5px; 
-    }
-    .userField {
-        margin-bottom: 5px; 
-    }
-    .label {
-        font-weight: bold; 
-        color: #aaa;
-        display: inline-block; 
-        width: 100px; 
-    }
-    .value {
-        color: #ddd;
-    }
-    .action-buttons {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 10px;
-    }
-    .favorite, .message {
-        flex: 1;
-        margin-left: 5px;
-        text-align: center;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profiles</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome for icons -->
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', sans-serif;
+            margin: 0;
+            background-color: #f8f9fa; /* Light gray background */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px;
+        }
+
+        #userList {
+            flex: 1;
+            max-width: 300px;
+            margin-right: 20px;
+            background: #fff; /* White background */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        #details {
+            flex: 2;
+            background: #f0f0f0; /* Light gray background */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        button, .favorite, .message {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            background-color: transparent; /* Transparent background */
+            color: #007bff; /* Blue text */
+            border: none; /* No border */
+            cursor: pointer;
+            text-align: center;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box-shadow for depth */
+        }
+
+        button:hover, .favorite:hover, .message:hover {
+            background-color: #f0f0f0; /* Light gray background on hover */
+        }
+
+        .userInfo {
+            padding: 5px;
+            margin-bottom: 20px; /* Add margin to each user info section */
+        }
+
+        .userField {
+            margin-bottom: 5px;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #555; /* Dark gray label */
+            display: inline-block;
+            width: 100px;
+        }
+
+        .value {
+            color: #333; /* Darker gray value */
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .favorite, .message {
+            flex: 1;
+            text-align: center;
+        }
+
+        .favorite {
+            margin-right: 5px; /* Add margin to the right of Favorite button */
+        }
+
+        .details-heading {
+            color: #007bff; /* Blue heading */
+            margin-bottom: 10px;
+        }
+
+        .details-content {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-<div id="userList"></div>
-<div id="details"><p>Select a user to see details.</p></div>
+<div class="container">
+    <div id="userList"></div>
+    <div id="details">
+        <h1 class="details-heading">Select a user to see details.</h1>
+        <div class="details-content"></div>
+    </div>
+</div>
 
 
 <script>
@@ -115,7 +129,30 @@ var usersData = Object.values(userData);
 document.addEventListener('DOMContentLoaded', function () {
     const userList = document.getElementById('userList');
     const details = document.getElementById('details');
-
+    function addToFavorites(userId) {
+        fetch('/add_to_favorites/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            body: JSON.stringify({ userId: userId })
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Failed to add user to favorites.');
+            }
+        })
+        .then(data => {
+            alert('User has been added to favorites.'); // Show pop-up message
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Failed to add user to favorites. Please try again later.');
+        });
+    }
     function renderUserList() {
         usersData.forEach((user, index) => {
             const userContainer = document.createElement('div');
@@ -129,9 +166,37 @@ document.addEventListener('DOMContentLoaded', function () {
             button.innerHTML = buttonText;
             button.onclick = () => showDetails(index);
 
+            //const favoriteForm = document.createElement('form');
+            //favoriteForm.action = '/add_to_favorites/';
+            //favoriteForm.method = 'POST';
+
             const favoriteForm = document.createElement('form');
             favoriteForm.action = '/add_to_favorites/';
             favoriteForm.method = 'POST';
+
+            // Add an event listener to the form submission
+            favoriteForm.addEventListener('submit', async (event) => {
+                event.preventDefault(); // Prevent default form submission behavior
+
+                // Submit the form using Fetch API
+                try {
+                    const response = await fetch(favoriteForm.action, {
+                        method: favoriteForm.method,
+                        body: new FormData(favoriteForm)
+                    });
+                    const responseData = await response.json();
+
+                    if (response.ok) {
+                        // If the request was successful, show a dialog box
+                        alert('Favorite has been added!');
+                    } else {
+                        // If there was an error, log the error message
+                        console.error('Error:', responseData.error);
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            });
 
             // CSRF Token needed for Django forms
             const csrfInput = document.createElement('input');

@@ -149,7 +149,7 @@ def filter_candidate(requirements):
       import re
       regex = r'\[.*?\]'
       results = re.findall(regex, results)
-      results= eval(results)
+      results= list(results)
    
    filtered_students={}
    x=0
@@ -358,8 +358,8 @@ def results(request):
    return render(request,'results.html')
 
 
-# def favourite(request):
-#    return render(request,'favourite.html')
+def favourite(request):
+   return render(request,'favourite.html')
 
 def search(request):
    return render(request,'search.html')
@@ -377,6 +377,10 @@ def postfilter(request):
    filters={'role':role, 'skills':skills, 'gpa':gpa, 'university':university, 'major': major, 'experience':experience}
 
    data_file=filter_candidate(filters)
+   print('before',data_file[0])
+   for i in data_file[0]:
+      if data_file[0][i]==None:
+         del data_file[0][i]
    print(data_file[0])
    return render(request,'results.html',{'file':data_file[0], 'ids':data_file[1]})
 
@@ -398,7 +402,7 @@ def add_to_favorites(request):
    if student_id in existing_students:
       return JsonResponse({'status': 'Duplicate: Student already added'})
    next_index = len(existing_students)
-   ref.child(str(next_index)).set(student_id)
+   ref.update({student_id:'1'})
    return JsonResponse({'status': 'Added', 'index': next_index})
 
 def favStudent(request):
@@ -412,19 +416,24 @@ def favStudent(request):
    filtered_students={}
    x=0
    res = []
-   for val in existing_students:
-      if val != None :
-         res.append(val)
+   print(existing_students)
+   if type(existing_students)==dict:
+      for val in existing_students:
+         if val != None :
+            res.append(val)
+   # if type(existing_students)==list:
+   #    for i in existing_students:
+   #       if i != None :
+   #          res.append(i)
    print('hu',res)
-   existing_students=res
-   for i in existing_students:
+   for i in res:
       if i is not None:
          data=get_data_rec(i)
          filtered_students[x]=data
          x+=1
    data_file=[]
    data_file.append(filtered_students)
-   return render(request,'favourite.html',{'file':data_file[0],'ids':existing_students})
+   return render(request,'favourite.html',{'file':data_file[0],'ids':res})
    
    
 @require_POST
@@ -439,30 +448,20 @@ def remove_from_favorites(request):
    
    student_id = request.POST.get('userId')
    key_to_remove = None
-   for i in range (len(existing_students)):
-      if existing_students[i] == student_id:
-         key_to_remove = str(i)
-         break
-   print(key_to_remove)
+   print('rem',existing_students)
+   if type(existing_students)==dict:
+      if type(existing_students)==dict:
+         for val in existing_students:
+            if val==student_id:
+               key_to_remove=val
+   # if type(existing_students)==list:
+   #    for i in (existing_students):
+   #       if i == student_id:
+   #          key_to_remove = str(i)
+   #          break
+   print(type(key_to_remove))
    if key_to_remove is None:
       return JsonResponse({'status': 'Not Found: Student ID not in favorites'}, status=404)
-
-   ref.child(key_to_remove).delete()
-   
-   while i in range(len(existing_students)):
-      if existing_students[i]==student_id:
-         key_to_remove=i
-         break
-   for i in existing_students:
-      if i==None:
-         existing_students.remove(i)
-   ref.child(str(i)).delete()   
-   existing_students = ref.get()
-   next_index = 0
-   print(existing_students)
-   while i in existing_students:
-      ref.child(str(next_index)).set(student_id)
-      next_index+=1
-   
-
+   if type(key_to_remove)==str:
+      ref.child(key_to_remove).delete() 
    return JsonResponse({'status': 'Removed', 'studentId': student_id})

@@ -1,0 +1,67 @@
+
+{
+  "Personal Info": {
+    "Name": "4 Al Gorithm",
+    "Email": "azg@cmu.edu",
+    "Phone Number": "(918) 555-6197",
+    "Location": "Pittsburgh, PA"
+  },
+  "Education": {
+    "Universities": [
+      "Carnegie Mellon University"
+    ],
+    "GPA/Grade": "3.0",
+    "Major": "Computer Science",
+    "Minor": "N/A"
+  },
+  "Skills": {
+    "Programming": [
+      "C/C++",
+      "Java",
+      "x86 assembly",
+      "C#",
+      "PHP",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "Technological": [
+      "Windows",
+      "Win32 API/GUI",
+      "Linux",
+      "MySQL",
+      "OpenGL"
+    ],
+    "Behavioural": [
+      "Problem-solving",
+      "Communication",
+      "Teamwork",
+      "Attention to detail",
+      "Customer service"
+    ]
+  },
+  "Work Experience": [
+    {
+      "Position": "Student Intern",
+      "Company": "Artemia Health Systems",
+      "Location": "Cleveland, Ohio",
+      "Dates": "Summer 2015",
+      "Summary": "Created new functionality for state-level prescription drug information system, worked with end users to determine their information needs, wrote application to create custom surveys, and migrated existing website from SQL Membership to ASP.NET."
+    },
+    {
+      "Position": "Student Consultant",
+      "Company": "Carnegie Mellon University Computing Services Help Center",
+      "Location": "Pittsburgh, PA",
+      "Dates": "September 2013 - Present",
+      "Summary": "Resolved issues regarding networking, email problems, and software for Carnegie Mellon University users, answered questions about software supported by the university, such as MS Office, and communicated with customers through email, telephone, and face to face."
+    }
+  ],
+  "Extracurricular Activities and Hobbies": [],
+  "Suggestions": [
+    "Software Engineer",
+    "Web Developer",
+    "IT Consultant",
+    "Data Analyst",
+    "Technical Project Manager"
+  ]
+}

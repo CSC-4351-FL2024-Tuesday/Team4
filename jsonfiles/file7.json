@@ -1,0 +1,72 @@
+
+{
+  "Personal Info": {
+    "Name": "FirstName LastName",
+    "Email": "tstudent@students.towson.edu",
+    "Phone Number": "410-555-5555",
+    "Location": "Cumberland, MD"
+  },
+  "Education": [
+    {
+      "University": "Towson University",
+      "GPA/Grade": "3.2",
+      "Major": "Biology",
+      "Minor": "Chemistry"
+    },
+    {
+      "University": "Harford Community College",
+      "GPA/Grade": "3.8",
+      "Major": "Biology",
+      "Minor": "N/A"
+    }
+  ],
+  "Skills": {
+    "Programming": [],
+    "Technological": [
+      "Microsoft Excel",
+      "Microsoft PowerPoint",
+      "Microsoft Word",
+      "ReservationsPro"
+    ],
+    "Behavioural": [
+      "Customer service",
+      "Leadership",
+      "Interpersonal skills",
+      "Organizational skills",
+      "Training"
+    ]
+  },
+  "Work Experience": [
+    {
+      "Position": "Sales Clerk",
+      "Company": "Staples Office Supply",
+      "Location": "Towson, MD",
+      "Dates": "September 20XX - Present",
+      "Summary": "Provided outstanding customer service, resulting in four Employee of the Month awards. Trained 15 new employees."
+    },
+    {
+      "Position": "Server and Hostess",
+      "Company": "Savage River Lodge",
+      "Location": "Frostburg, MD",
+      "Dates": "Summer 20XX",
+      "Summary": "Promoted to hostess within three weeks due to exceptional interpersonal skills. Mastered ReservationsPro software to enhance efficiency and customer service."
+    }
+  ],
+  "Extracurricular Activities and Hobbies": [
+    {
+      "Activity": "Volunteer",
+      "Role": "Allegheny Summer Education Program"
+    },
+    {
+      "Activity": "Choir",
+      "Role": "Garrison Keillor Lutheran Church"
+    }
+  ],
+  "Suggestions": [
+    "Customer Service Manager",
+    "Sales Manager",
+    "Training and Development Manager",
+    "Event Coordinator",
+    "Human Resources Manager"
+  ]
+}

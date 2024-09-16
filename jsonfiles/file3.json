@@ -1,0 +1,77 @@
+
+{
+  "Personal Info": {
+    "Name": "TUSHAR MISHRA",
+    "Email": "mtushar2508@gmail.com",
+    "Phone Number": "470-815-7502",
+    "Location": "Athens, GA"
+  },
+  "Education": {
+    "Universities": [
+      "University of Georgia"
+    ],
+    "GPA/Grade": "3.74/4.00",
+    "Major": "Computer Science",
+    "Minor": "N/A"
+  },
+  "Skills": {
+    "Programming Skills": [
+      "Java",
+      "C",
+      "Python",
+      "C++",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Kotlin"
+    ],
+    "Technological Skills": [
+      "Bootstrap",
+      "Tailwind",
+      "React",
+      "Node",
+      "Angular"
+    ],
+    "Behavioural Skills": [
+      "Problem-solving",
+      "Critical thinking",
+      "Communication",
+      "Teamwork",
+      "Time management"
+    ]
+  },
+  "Work Experience": [
+    {
+      "Position": "Undergraduate Research Assistant",
+      "Company": "LSDIS Lab, University of Georgia",
+      "Location": "Athens, GA",
+      "Dates": "May 2023 - Present",
+      "Summary": "Working on developing a predictive model using transformers, graph neural networks, and knowledge graphs; enhancing ChatGPT's fact-checking capabilities using a knowledge graph framework."
+    },
+    {
+      "Position": "Information Technology Support Assistant",
+      "Company": "CAES, University of Georgia",
+      "Location": "Athens, GA",
+      "Dates": "January 2023 - Present",
+      "Summary": "Providing technical support to faculty, staff, and students; reducing help desk tickets by 25%."
+    },
+    {
+      "Position": "Information Technology Environment Assistant",
+      "Company": "Georgia State University",
+      "Location": "Atlanta, GA",
+      "Dates": "September 2022 - December 2022",
+      "Summary": "Resolving IT support requests for students, staff, and professors; assembling, reimaging, and troubleshooting computers and other equipment."
+    }
+  ],
+  "Extracurricular Activities and Hobbies": [],
+  "Links": [
+    "http://MenaceHecker.github.io/portfolioProj"
+  ],
+  "Suggestions": [
+    "Software Engineer",
+    "Data Scientist",
+    "Machine Learning Engineer",
+    "Web Developer",
+    "Mobile App Developer"
+  ]
+}
